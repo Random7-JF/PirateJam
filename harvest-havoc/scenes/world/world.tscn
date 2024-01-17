@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://wkikqlwmq0mr"]
+[gd_scene load_steps=7 format=3 uid="uid://wkikqlwmq0mr"]
 
 [ext_resource type="Texture2D" uid="uid://cn4t64kwwuofi" path="res://assets/spritesheets/top_down_sprites.png" id="2_8fg4d"]
 [ext_resource type="Texture2D" uid="uid://dp2ka6f3fp86f" path="res://assets/spritesheets/store.png" id="3_fnhco"]
+[ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="3_jb4ie"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0uq5k"]
 texture = ExtResource("2_8fg4d")
@@ -560,3 +561,6 @@ layer_2/name = "Ground Objects"
 layer_2/tile_data = PackedInt32Array(589831, 131072, 6, 589835, 262144, 6, 983051, 262144, 8, 983047, 131072, 8, 917511, 65536, 7, 851975, 65536, 7, 786439, 65536, 7, 720903, 65536, 7, 655367, 65536, 7, 655371, 327680, 7, 720907, 327680, 7, 786443, 327680, 7, 851979, 327680, 7, 917515, 327680, 7, 589832, 262144, 9, 589834, 131072, 9, 983048, 262144, 9, 983050, 131072, 9)
 layer_3/name = "Buildings"
 layer_3/tile_data = PackedInt32Array()
+
+[node name="Goat" parent="." instance=ExtResource("3_jb4ie")]
+position = Vector2(259, 272)
