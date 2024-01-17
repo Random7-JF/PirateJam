@@ -549,6 +549,7 @@ sources/1 = SubResource("TileSetAtlasSource_tg3ff")
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
 tile_set = SubResource("TileSet_uecul")
 format = 2
 layer_0/name = "Ground"
