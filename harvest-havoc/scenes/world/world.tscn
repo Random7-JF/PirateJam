@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://wkikqlwmq0mr"]
+[gd_scene load_steps=6 format=3 uid="uid://wkikqlwmq0mr"]
 
-[ext_resource type="Script" path="res://Node2D.gd" id="1_hxm6n"]
 [ext_resource type="Texture2D" uid="uid://cn4t64kwwuofi" path="res://assets/spritesheets/top_down_sprites.png" id="2_8fg4d"]
 [ext_resource type="Texture2D" uid="uid://dp2ka6f3fp86f" path="res://assets/spritesheets/store.png" id="3_fnhco"]
 
@@ -551,7 +550,6 @@ sources/0 = SubResource("TileSetAtlasSource_0uq5k")
 sources/1 = SubResource("TileSetAtlasSource_tg3ff")
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_hxm6n")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_uecul")
