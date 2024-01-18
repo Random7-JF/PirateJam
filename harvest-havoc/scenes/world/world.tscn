@@ -35,7 +35,6 @@ layer_3/name = "Buildings"
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Goat" parent="." instance=ExtResource("3_jb4ie")]
-position = Vector2(149, 382)
 position = Vector2(151, 232)
 dest = Vector2(750, 400)
 
