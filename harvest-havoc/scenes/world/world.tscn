@@ -29,7 +29,6 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Goat" parent="." instance=ExtResource("3_jb4ie")]
 position = Vector2(149, 382)
-dest = Vector2(750, 400)
 
 [node name="Camera2D" type="Camera2D" parent="Goat"]
 process_callback = 0
