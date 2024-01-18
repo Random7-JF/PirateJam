@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://wkikqlwmq0mr"]
+[gd_scene load_steps=7 format=3 uid="uid://wkikqlwmq0mr"]
 
-[ext_resource type="PackedScene" uid="uid://cax6o1aunalw5" path="res://scenes/weed/weed_spawner.tscn" id="1_durjy"]
 [ext_resource type="TileSet" uid="uid://bvgohau7pqfup" path="res://resources/world/world-tileset.tres" id="1_qstxa"]
-[ext_resource type="PackedScene" uid="uid://crbsybrogfqag" path="res://scenes/weed/weed.tscn" id="3_5mffy"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="3_jb4ie"]
+[ext_resource type="PackedScene" uid="uid://cax6o1aunalw5" path="res://scenes/weed/weed_spawner.tscn" id="3_wkty0"]
+[ext_resource type="PackedScene" uid="uid://cvai8hp7jhbwp" path="res://scenes/weed/spawn/spawn_marker.tscn" id="4_4d4yi"]
+[ext_resource type="PackedScene" uid="uid://bag0pulq4xfsp" path="res://scenes/weed/spawn/spawn_region.tscn" id="5_u8fk5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_817fc"]
 vertices = PackedVector2Array(554, 599, 1078, 626, 10, 624, 502, 599, 528, 517, 502, 539, 458, 522, 458, 406, 598, 406, 1133, 12, 1130, 534, 1078, 534, 906, 362, 906, 246, 384, 406, 383, 394, 384, 394, 832, 522, 554, 539, 769, 522, 832, 480, 831, 458, 832, 458, 671, 310, 672, 342, 671, 342, 458, 246, 202, 74, 672, 374, 671, 374, 672, 406, 458, 362, 831, 426, 832, 426, 831, 394, 832, 394, 831, 362, 383, 362, 223, 310, 224, 342, 223, 342, 54, 106, 224, 374, 223, 374, 224, 406, 223, 406, 224, 438, 223, 438, 1136, 566, 1130, 566, 202, 12, 822, 246, 822, 278, 769, 278, 769, 330, 802, 330, 802, 470, 769, 470, 736, 522, 735, 470, 736, 330, 704, 470, 704, 330, 735, 278, 673, 278, 673, 310, 374, 246, 374, 278, 321, 278, 321, 330, 354, 330, 354, 470, 321, 470, 287, 470, 256, 470, 256, 330, 288, 330, 225, 278, 225, 310, 138, 106, 224, 490, 225, 490, 225, 522, 10, 42, 54, 42, 287, 278, 138, 74, 288, 522, 598, 522, 321, 522)
@@ -13,12 +14,16 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="World" type="Node2D"]
 
-[node name="WeedSpawner" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("1_durjy")]
-max_weeds_to_spawn = 15
-weed_scene = ExtResource("3_5mffy")
-tilemap = NodePath("../NavigationAgent2D2/TileMap")
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(601, 327)
+zoom = Vector2(0.5, 0.5)
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="NavigationAgent2D2" type="NavigationRegion2D" parent="."]
+position = Vector2(27, -28)
 navigation_polygon = SubResource("NavigationPolygon_817fc")
 
 [node name="TileMap" type="TileMap" parent="NavigationAgent2D2"]
@@ -46,10 +51,22 @@ dest = Vector2(100, 250)
 position = Vector2(1083, 307)
 dest = Vector2(450, 450)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(585, 326)
-zoom = Vector2(0.5, 0.5)
-process_callback = 0
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
+[node name="WeedSpawner" parent="." instance=ExtResource("3_wkty0")]
+
+[node name="SpawnRegion" parent="WeedSpawner" instance=ExtResource("5_u8fk5")]
+placeholder = ExtResource("4_4d4yi")
+
+[node name="SpawnMarkerTR" parent="WeedSpawner/SpawnRegion" instance=ExtResource("4_4d4yi")]
+position = Vector2(158, 123)
+
+[node name="SpawnMarkerBL" parent="WeedSpawner/SpawnRegion" instance=ExtResource("4_4d4yi")]
+position = Vector2(217, 309)
+
+[node name="SpawnRegion2" parent="WeedSpawner" instance=ExtResource("5_u8fk5")]
+placeholder = ExtResource("4_4d4yi")
+
+[node name="SpawnMarkerTR" parent="WeedSpawner/SpawnRegion2" instance=ExtResource("4_4d4yi")]
+position = Vector2(406, 265)
+
+[node name="SpawnMarkerBL" parent="WeedSpawner/SpawnRegion2" instance=ExtResource("4_4d4yi")]
+position = Vector2(622, 348)
