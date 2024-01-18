@@ -160,4 +160,3 @@ path_desired_distance = 5.0
 target_desired_distance = 50.0
 path_max_distance = 10.0
 path_postprocessing = 1
-debug_enabled = true
