@@ -38,6 +38,14 @@ layer_3/tile_data = PackedInt32Array()
 position = Vector2(151, 232)
 dest = Vector2(750, 400)
 
+[node name="Goat2" parent="." instance=ExtResource("3_jb4ie")]
+position = Vector2(1041, 604)
+dest = Vector2(100, 250)
+
+[node name="Goat3" parent="." instance=ExtResource("3_jb4ie")]
+position = Vector2(1083, 307)
+dest = Vector2(450, 450)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(585, 326)
 zoom = Vector2(0.5, 0.5)
