@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cax6o1aunalw5"]
+
+[ext_resource type="Script" path="res://scenes/weed/weed_spawner.gd" id="1_1v7qv"]
+
+[node name="WeedSpawner" type="Node"]
+script = ExtResource("1_1v7qv")

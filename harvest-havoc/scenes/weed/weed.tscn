@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://crbsybrogfqag"]
+
+[ext_resource type="Texture2D" uid="uid://cn4t64kwwuofi" path="res://assets/spritesheets/top_down_sprites.png" id="1_be7ej"]
+[ext_resource type="Script" path="res://scenes/weed/weed.gd" id="1_t0sff"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utkoj"]
+atlas = ExtResource("1_be7ej")
+region = Rect2(416, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_corcr"]
+atlas = ExtResource("1_be7ej")
+region = Rect2(480, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33th1"]
+atlas = ExtResource("1_be7ej")
+region = Rect2(448, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2juk"]
+atlas = ExtResource("1_be7ej")
+region = Rect2(512, 320, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scvhm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utkoj")
+}],
+"loop": false,
+"name": &"weed_1",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_corcr")
+}],
+"loop": true,
+"name": &"weed_2",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33th1")
+}],
+"loop": false,
+"name": &"weed_3",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2juk")
+}],
+"loop": false,
+"name": &"weed_4",
+"speed": 1.0
+}]
+
+[node name="Weed" type="Node2D"]
+script = ExtResource("1_t0sff")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_scvhm")
+animation = &"weed_4"
