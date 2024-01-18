@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bm10j5lkgvf1x"]
+[gd_scene load_steps=21 format=3 uid="uid://bm10j5lkgvf1x"]
 
 [ext_resource type="Script" path="res://scenes/character/goat/goat.gd" id="1_fc1xi"]
 [ext_resource type="Texture2D" uid="uid://cn4t64kwwuofi" path="res://assets/spritesheets/top_down_sprites.png" id="1_rmscp"]
@@ -138,11 +138,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Goat" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4np2b"]
+size = Vector2(24, 18)
+
+[node name="Goat" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_fc1xi")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_15hdw")
-animation = &"walk_right"
-frame_progress = 0.20025
+animation = &"eat_left"
+frame_progress = 0.566655
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_4np2b")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 50.0
+path_max_distance = 10.0
+path_postprocessing = 1
+debug_enabled = true
