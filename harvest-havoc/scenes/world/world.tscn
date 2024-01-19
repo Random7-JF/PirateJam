@@ -99,7 +99,7 @@ position = Vector2(981, 499)
 dest = Vector2(171, 401)
 
 [node name="Goat4" parent="." instance=ExtResource("3_jb4ie")]
-position = Vector2(607, 16)
+position = Vector2(674, 74)
 dest = Vector2(329, 702)
 
 [node name="Goat5" parent="." instance=ExtResource("3_jb4ie")]
