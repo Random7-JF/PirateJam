@@ -9,7 +9,7 @@ extends Node
 @onready var weeds: Node = $Weeds
 
 const TILE_SIZE: int = 32
-const WEED_MAX_LEVEL: int = 4
+const WEED_MAX_LEVEL: int = 3
 
 var weed_spawn_locations: Array[Rect2i]
 
@@ -26,7 +26,7 @@ func _ready():
 func _on_timer_timeout():
 	spawn_weeds()
 	grow_weeds()
-	timer.wait_time = randf_range(0, timer_start)
+	timer.wait_time = randf_range( timer_start / 2, timer_start)
 	timer.start()
 
 #########################################

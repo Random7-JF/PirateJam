@@ -26,7 +26,5 @@ func update_weed_sprite() -> void:
 		sprite.play("weed_1")
 	elif weed_level == 2:
 		sprite.play("weed_2")
-	elif weed_level == 3:
-		sprite.play("weed_3")
 	else:
-		sprite.play("weed_4")
+		sprite.play("weed_3")
