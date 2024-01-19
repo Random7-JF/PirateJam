@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cn4t64kwwuofi" path="res://assets/spritesheets/top_down_sprites.png" id="1_bgs7g"]
 [ext_resource type="Texture2D" uid="uid://dp2ka6f3fp86f" path="res://assets/spritesheets/store.png" id="2_14ln0"]
 [ext_resource type="Texture2D" uid="uid://bf3wxe5875xoj" path="res://assets/spritesheets/Swaying weeds.png" id="3_v77gc"]
-[ext_resource type="Texture2D" uid="uid://bmtam2a1cfey" path="res://assets/spritesheets/pink_tile.png" id="4_2kqra"]
+[ext_resource type="Texture2D" uid="uid://chveg6g3mgh4k" path="res://assets/spritesheets/pink_tile.png" id="4_2kqra"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c78oe"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
