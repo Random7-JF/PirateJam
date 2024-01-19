@@ -53,7 +53,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"weed_1",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -67,7 +67,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"weed_2",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -81,7 +81,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"weed_3",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [node name="Weed" type="Node2D"]
@@ -89,4 +89,4 @@ script = ExtResource("1_t0sff")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_scvhm")
-animation = &"weed_1"
+animation = &"weed_3"

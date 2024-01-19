@@ -165,7 +165,6 @@ path_postprocessing = 1
 avoidance_enabled = true
 radius = 25.0
 neighbor_distance = 100.0
-debug_enabled = true
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
