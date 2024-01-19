@@ -11,33 +11,40 @@ extends Node
 const TILE_SIZE: int = 32
 const WEED_MAX_LEVEL: int = 4
 
-var weed_spawn_range: Vector2i
+var weed_spawn_locations: Array[Rect2i]
 
 func _ready():
 	if not weed_scene:
 		printerr("Missing weed_scene")
 		return
-	weed_spawn_range = get_spawn_range()
-	spawn_weeds(weed_spawn_range)
+
+	for child in $Spawn.get_children():
+		weed_spawn_locations.append(child.spawn_area)
+
+	spawn_weeds()
 
 func _on_timer_timeout():
-		spawn_weeds(weed_spawn_range)
-		grow_weeds()
-		timer.wait_time = randf_range(0, timer_start)
-		timer.start()
+	spawn_weeds()
+	grow_weeds()
+	timer.wait_time = randf_range(0, timer_start)
+	timer.start()
+
 #########################################
+func get_spawn_location_in_region(region: Rect2i) -> Vector2i:
+	return Vector2i(
+		randi_range(region.position.x + TILE_SIZE, region.position.x + region.size.x - TILE_SIZE),
+		randi_range(region.position.y + TILE_SIZE, region.position.y + region.size.y - TILE_SIZE)
+	)
 
-func get_spawn_range() -> Vector2i:
-	var rect = tilemap.get_used_rect()
-	return Vector2i(rect.end.x * TILE_SIZE, rect.end.y * TILE_SIZE)
+func pick_spawn_coords() -> Vector2i:
+	return get_spawn_location_in_region(
+		weed_spawn_locations[randi_range(0 , weed_spawn_locations.size() - 1)]
+		)
 
-func get_spawn_location(spawn_range: Vector2i) -> Vector2i:
-	return Vector2i(randi_range(0,spawn_range.x),randi_range(0,spawn_range.y))
-
-func spawn_weeds(spawn_range: Vector2):
+func spawn_weeds() -> void:
 	for index in range(0,max_weeds_to_spawn):
 		var instance = weed_scene.instantiate()
-		instance.global_position = get_spawn_location(spawn_range)
+		instance.global_position = pick_spawn_coords()
 		weeds.add_child(instance)
 
 func grow_weeds() -> void:

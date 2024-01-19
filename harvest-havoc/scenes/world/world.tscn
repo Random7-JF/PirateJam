@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://wkikqlwmq0mr"]
+[gd_scene load_steps=8 format=3 uid="uid://wkikqlwmq0mr"]
 
 [ext_resource type="TileSet" uid="uid://bvgohau7pqfup" path="res://resources/world/world-tileset.tres" id="1_qstxa"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="3_jb4ie"]
 [ext_resource type="PackedScene" uid="uid://cax6o1aunalw5" path="res://scenes/weed/weed_spawner.tscn" id="3_wkty0"]
 [ext_resource type="PackedScene" uid="uid://cvai8hp7jhbwp" path="res://scenes/weed/spawn/spawn_marker.tscn" id="4_4d4yi"]
+[ext_resource type="PackedScene" uid="uid://crbsybrogfqag" path="res://scenes/weed/weed.tscn" id="4_yf42p"]
 [ext_resource type="PackedScene" uid="uid://bag0pulq4xfsp" path="res://scenes/weed/spawn/spawn_region.tscn" id="5_u8fk5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_817fc"]
@@ -51,22 +52,25 @@ dest = Vector2(100, 250)
 position = Vector2(1083, 307)
 dest = Vector2(450, 450)
 
-[node name="WeedSpawner" parent="." instance=ExtResource("3_wkty0")]
+[node name="WeedSpawner" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("3_wkty0")]
+max_weeds_to_spawn = 10
+weed_scene = ExtResource("4_yf42p")
+tilemap = NodePath("../NavigationAgent2D2/TileMap")
 
-[node name="SpawnRegion" parent="WeedSpawner" instance=ExtResource("5_u8fk5")]
-placeholder = ExtResource("4_4d4yi")
+[node name="Spawn" type="Node2D" parent="WeedSpawner"]
 
-[node name="SpawnMarkerTR" parent="WeedSpawner/SpawnRegion" instance=ExtResource("4_4d4yi")]
-position = Vector2(158, 123)
+[node name="SpawnRegion" parent="WeedSpawner/Spawn" instance=ExtResource("5_u8fk5")]
 
-[node name="SpawnMarkerBL" parent="WeedSpawner/SpawnRegion" instance=ExtResource("4_4d4yi")]
-position = Vector2(217, 309)
+[node name="SpawnMarkerTR" parent="WeedSpawner/Spawn/SpawnRegion" instance=ExtResource("4_4d4yi")]
+position = Vector2(32, 98)
 
-[node name="SpawnRegion2" parent="WeedSpawner" instance=ExtResource("5_u8fk5")]
-placeholder = ExtResource("4_4d4yi")
+[node name="SpawnMarkerBL" parent="WeedSpawner/Spawn/SpawnRegion" instance=ExtResource("4_4d4yi")]
+position = Vector2(749, 232)
 
-[node name="SpawnMarkerTR" parent="WeedSpawner/SpawnRegion2" instance=ExtResource("4_4d4yi")]
-position = Vector2(406, 265)
+[node name="SpawnRegion2" parent="WeedSpawner/Spawn" instance=ExtResource("5_u8fk5")]
 
-[node name="SpawnMarkerBL" parent="WeedSpawner/SpawnRegion2" instance=ExtResource("4_4d4yi")]
-position = Vector2(622, 348)
+[node name="SpawnMarkerTR" parent="WeedSpawner/Spawn/SpawnRegion2" instance=ExtResource("4_4d4yi")]
+position = Vector2(744, 21)
+
+[node name="SpawnMarkerBL" parent="WeedSpawner/Spawn/SpawnRegion2" instance=ExtResource("4_4d4yi")]
+position = Vector2(1161, 247)
