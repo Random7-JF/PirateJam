@@ -1,9 +1,9 @@
-[gd_resource type="TileSet" load_steps=33 format=3 uid="uid://bvgohau7pqfup"]
+[gd_resource type="TileSet" load_steps=34 format=3 uid="uid://bvgohau7pqfup"]
 
 [ext_resource type="Texture2D" uid="uid://cn4t64kwwuofi" path="res://assets/spritesheets/top_down_sprites.png" id="1_bgs7g"]
 [ext_resource type="Texture2D" uid="uid://dp2ka6f3fp86f" path="res://assets/spritesheets/store.png" id="2_14ln0"]
 [ext_resource type="Texture2D" uid="uid://bf3wxe5875xoj" path="res://assets/spritesheets/Swaying weeds.png" id="3_v77gc"]
-[ext_resource type="Texture2D" uid="uid://bmtam2a1cfey" path="res://assets/spritesheets/pink_tile.png" id="4_2kqra"]
+[ext_resource type="Texture2D" uid="uid://6i6wylqkjfg6" path="res://assets/spritesheets/Colour_tile_sheet.png" id="4_tg832"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c78oe"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -928,13 +928,33 @@ texture_region_size = Vector2i(32, 32)
 2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:2/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5dnu"]
-texture = ExtResource("4_2kqra")
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2yjju"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_csg2p"]
+texture = ExtResource("4_tg832")
 texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_2yjju")
+1:3/0/custom_data_0 = true
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -946,4 +966,4 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_0uq5k")
 sources/1 = SubResource("TileSetAtlasSource_tg3ff")
 sources/2 = SubResource("TileSetAtlasSource_eeban")
-sources/3 = SubResource("TileSetAtlasSource_u5dnu")
+sources/4 = SubResource("TileSetAtlasSource_csg2p")

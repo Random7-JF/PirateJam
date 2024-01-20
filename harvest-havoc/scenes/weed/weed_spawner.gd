@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @export var max_weeds_to_spawn: int = 5
 @export var weed_scene: PackedScene
@@ -28,19 +28,19 @@ func _on_timer_timeout():
 	grow_weeds()
 	timer.wait_time = randf_range( timer_start / 2, timer_start)
 	timer.start()
-
-# func _input(event):
-# 	if event.is_action_pressed("mouse_left"):
-# 		#tilemap_check()
  
 #########################################
 
-func tilemap_check(position: Vector2i):
-	var clicked_cell = tilemap.local_to_map(position)
-	print(clicked_cell)
-	var tile_data = tilemap.get_cell_tile_data(1, clicked_cell)
+func tilemap_check(tile_position: Vector2i) -> bool:
+	#title_position is global
+	var check_cell = tilemap.local_to_map(tile_position)
+	var tile_data = tilemap.get_cell_tile_data(0, check_cell)
 	if tile_data:
-		print("can grow -> ", clicked_cell, " : ", tile_data.get_custom_data(CAN_GROW))
+		print("can grow -> ", check_cell, " : ", tile_data.get_custom_data(CAN_GROW))
+		return true
+	else:
+		print("can not grow -> ", check_cell)
+		return false
 	
 
 func get_spawn_location_in_region(region: Rect2i) -> Vector2i:
@@ -57,8 +57,11 @@ func pick_spawn_coords() -> Vector2i:
 func spawn_weeds() -> void:
 	for index in range(0,max_weeds_to_spawn):
 		var instance = weed_scene.instantiate()
-		instance.global_position = pick_spawn_coords()
-		tilemap_check(pick_spawn_coords())
+		var spawn_position = pick_spawn_coords()
+		while not tilemap_check(spawn_position):
+			spawn_position = pick_spawn_coords()
+		instance.global_position = spawn_position
+		print("SpawnPos: ", spawn_position)
 		weeds.add_child(instance)
 
 func grow_weeds() -> void:
