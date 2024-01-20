@@ -11,25 +11,22 @@ extends Node2D
 const TILE_SIZE: int = 32
 const WEED_MAX_LEVEL: int = 3
 const CAN_GROW: String = "can_grow"
-
-var weed_spawn_locations: Array[Rect2i]
+const OBJECT_LAYER: int = 0
+const TILE_SOURCE: int = 4
+const GROW_TILE: Vector2i = Vector2i(1,3)
 
 func _ready():
 	if not weed_scene:
 		printerr("Missing weed_scene")
 		return
-
-	for child in $Spawn.get_children():
-		weed_spawn_locations.append(child.spawn_area)
 	spawn_weeds()
 
 func _on_timer_timeout():
 	spawn_weeds()
-	grow_weeds()
+	#grow_weeds()
 	timer.wait_time = randf_range( timer_start / 2, timer_start)
 	timer.start()
- 
-#########################################
+ #########################################
 
 func tilemap_check(tile_position: Vector2i) -> bool:
 	#title_position is global
@@ -41,28 +38,17 @@ func tilemap_check(tile_position: Vector2i) -> bool:
 	else:
 		print("can not grow -> ", check_cell)
 		return false
-	
 
-func get_spawn_location_in_region(region: Rect2i) -> Vector2i:
-	return Vector2i(
-		randi_range(region.position.x + TILE_SIZE, region.position.x + region.size.x - TILE_SIZE),
-		randi_range(region.position.y + TILE_SIZE, region.position.y + region.size.y - TILE_SIZE)
-	)
-
-func pick_spawn_coords() -> Vector2i:
-	return get_spawn_location_in_region(
-		weed_spawn_locations[randi_range(0 , weed_spawn_locations.size() - 1)]
-		)
-
-func spawn_weeds() -> void:
+func spawn_weeds() -> void: 
+	var spawn_tiles: Array[Vector2i] = tilemap.get_used_cells_by_id(OBJECT_LAYER, TILE_SOURCE, GROW_TILE)
+	print("Number of spawn tiles: ", spawn_tiles.size())
 	for index in range(0,max_weeds_to_spawn):
 		var instance = weed_scene.instantiate()
-		var spawn_position = pick_spawn_coords()
-		while not tilemap_check(spawn_position):
-			spawn_position = pick_spawn_coords()
-		instance.global_position = spawn_position
-		print("SpawnPos: ", spawn_position)
+		var spawn_pos:Vector2i = spawn_tiles[randi_range(0,spawn_tiles.size()-1)] * TILE_SIZE
+		spawn_pos = spawn_pos + Vector2i(TILE_SIZE / 2, TILE_SIZE /2)
+		instance.global_position = spawn_pos
 		weeds.add_child(instance)
+		print("SpawnPos: ", spawn_pos)
 
 func grow_weeds() -> void:
 	var current_weeds = weeds.get_children()
