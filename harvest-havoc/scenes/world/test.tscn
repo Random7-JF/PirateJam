@@ -12,7 +12,6 @@ format = 2
 layer_0/tile_data = PackedInt32Array(65537, 65540, 3, 65538, 65540, 3, 131073, 65540, 3, 131074, 65540, 3, 458758, 65540, 3, 786446, 65540, 3, 1114134, 65540, 3, 1638433, 65540, 3, 1966122, 65540, 3, 1114118, 65540, 3)
 
 [node name="WeedSpawner" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("2_s7nct")]
-max_weeds_to_spawn = 1500
 weed_scene = ExtResource("3_uadxc")
 tilemap = NodePath("../TileMap")
 
