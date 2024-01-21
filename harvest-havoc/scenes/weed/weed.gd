@@ -3,21 +3,17 @@ extends Node2D
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var timer: Timer = $Timer
 
-
 @export var lifetime: int = 0: set = set_lifetime
 @export var level_up_time: int = 2: set = set_level_up_time
 @export var weed_level: int = 1: set = set_level
 
 const WEED_MAX_LEVEL: int = 3
 
-var game_manager: Node
+var game_manager
 
 func _ready():
-	# TODO: Fix this nonsense.
-	# game_manager = get_node("/../../../GameManager")
-	# if game_manager:
-	# 	print("found game manager")
-	# 	game_manager.connect("lifetime_tick", level_up)
+	game_manager = get_tree().get_current_scene().get_node("GameManager")
+	game_manager.connect("lifetime_tick", level_up)
 	update_weed_sprite()
 
 func _on_timer_timeout():
@@ -43,13 +39,14 @@ func set_level_up_time(time: int) -> void:
 
 func level_up() -> void:
 	print("Lifetime tick recieved")
+	print(name)
 	if  lifetime >= level_up_time and weed_level < WEED_MAX_LEVEL:
 		if randi_range(1,2) % 2 == 0:
 				set_level(weed_level + 1)
 				set_lifetime(0)
 				set_level_up_time(weed_level * level_up_time / 2)
 				print("Growing weed -> ", name, " from ", weed_level, " to ", weed_level +1)
-		else:
-			set_lifetime(lifetime + 1)
+	else:
+		set_lifetime(lifetime + 1)
 
 

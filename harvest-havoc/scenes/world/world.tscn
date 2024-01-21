@@ -17,6 +17,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="GameManager" parent="." instance=ExtResource("1_uuhqj")]
 unique_name_in_owner = true
+tick_in_seconds = 5
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_umqdg")
