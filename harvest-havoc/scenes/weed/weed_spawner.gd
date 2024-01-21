@@ -18,12 +18,13 @@ const WEED_GROW_TILE: Vector2i = Vector2i(1,3)
 const CROP_GROW_TILE: Vector2i = Vector2i(3,3)
 
 var spawn_tiles: Array[Vector2i]
-
+var game_manager: Node
 
 func _ready():
 	if not weed_scene:
 		printerr("Missing weed_scene")
 		return
+	game_manager = get_tree().get_current_scene().get_node("GameManager")
 	find_spawn_tiles()
 
 func _on_timer_timeout():

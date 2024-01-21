@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://wkikqlwmq0mr"]
+[gd_scene load_steps=7 format=3 uid="uid://wkikqlwmq0mr"]
 
 [ext_resource type="TileSet" uid="uid://bvgohau7pqfup" path="res://resources/world/world-tileset.tres" id="1_qstxa"]
 [ext_resource type="PackedScene" uid="uid://icdl7gj3wxwo" path="res://scenes/game_manager/game_manager.tscn" id="1_uuhqj"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="3_jb4ie"]
 [ext_resource type="PackedScene" uid="uid://cax6o1aunalw5" path="res://scenes/weed/weed_spawner.tscn" id="3_wkty0"]
-[ext_resource type="PackedScene" uid="uid://cvai8hp7jhbwp" path="res://scenes/weed/spawn/spawn_marker.tscn" id="4_4d4yi"]
 [ext_resource type="PackedScene" uid="uid://crbsybrogfqag" path="res://scenes/weed/weed.tscn" id="4_yf42p"]
-[ext_resource type="PackedScene" uid="uid://bag0pulq4xfsp" path="res://scenes/weed/spawn/spawn_region.tscn" id="5_u8fk5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_umqdg"]
 vertices = PackedVector2Array(584, 141, 1076, 109, 1224, 109, 840, 249, 756, 249, 712, 781, 1364, 825, -504, 825, 372, 781, 712, 633, 628, 633, 168, 493, 180, 493, 1364, 13, 840, 493, 1288, 77, 84, 249, 84, 77, 308, 77, 308, 141, 168, 249, 360, 141, 360, 13, 372, 13, 372, 109, 520, 13, 660, 13, 660, 77, 584, 57, 808, 77, 808, 13, 820, 13, 820, 77, 904, 77, 904, 13, 1076, 13, 532, 57, 520, 109, 532, 141, 1224, 77, 1288, 13, 756, 301, 788, 301, 788, 441, 756, 441, 756, 493, 744, 493, 744, 441, 744, 301, 712, 441, 712, 301, 744, 249, 660, 249, 468, 301, 500, 301, 500, 441, 468, 441, 456, 441, 424, 441, 424, 301, 456, 301, 180, 301, 212, 301, 212, 441, 180, 441, 168, 441, 136, 441, 136, 301, 168, 301, 628, 685, 584, 685, 584, 633, 244, 633, 84, 493, 328, 729, 296, 729, 296, 685, 660, 685, 660, 729, 372, 729, 328, 781, 244, 781, -504, 13, 84, 13, 264, 493, 372, 493, 660, 493, 552, 249, 180, 249, 552, 493, 468, 249, 468, 493, 456, 493, 456, 249, 372, 249, 264, 249)
@@ -50,16 +48,6 @@ position_smoothing_enabled = true
 weed_scene = ExtResource("4_yf42p")
 tilemap = NodePath("../NavigationRegion2D/TileMap")
 timer_start = 15.0
-
-[node name="Spawn" type="Node2D" parent="WeedSpawner"]
-
-[node name="SpawnRegion" parent="WeedSpawner/Spawn" instance=ExtResource("5_u8fk5")]
-
-[node name="SpawnMarkerTR" parent="WeedSpawner/Spawn/SpawnRegion" instance=ExtResource("4_4d4yi")]
-position = Vector2(-512, 0)
-
-[node name="SpawnMarkerBL" parent="WeedSpawner/Spawn/SpawnRegion" instance=ExtResource("4_4d4yi")]
-position = Vector2(1372, 833)
 
 [node name="Goat2" parent="." instance=ExtResource("3_jb4ie")]
 position = Vector2(545, 18)

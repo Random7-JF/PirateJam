@@ -90,7 +90,3 @@ script = ExtResource("1_t0sff")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_scvhm")
 animation = &"weed_3"
-
-[node name="Timer" type="Timer" parent="."]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
