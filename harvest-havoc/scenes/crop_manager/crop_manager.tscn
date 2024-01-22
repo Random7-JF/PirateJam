@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bggsw1fmeodv8"]
+
+[ext_resource type="Script" path="res://scenes/crop_manager/crop_manager.gd" id="1_cxs16"]
+
+[node name="CropManager" type="Node2D"]
+script = ExtResource("1_cxs16")
