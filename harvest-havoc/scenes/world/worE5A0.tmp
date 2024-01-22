@@ -36,6 +36,10 @@ layer_5/tile_data = PackedInt32Array(-262139, 131074, 1, -196603, 131074, 2, -13
 layer_6/name = "Structure Objects"
 layer_6/tile_data = PackedInt32Array(-196602, 131074, 6, -196601, 196610, 6)
 script = ExtResource("2_hh5on")
+max_spawned_weeds = null
+max_weeds_per_spawn = null
+weed_spawn_delay = null
+weed_spawn_delay_variance = null
 
 [node name="WeedTimer" type="Timer" parent="Tilemap"]
 
