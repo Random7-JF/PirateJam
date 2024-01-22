@@ -47,14 +47,9 @@ func _on_weed_timer_timeout():
 			grow_weed(current_weeds.pick_random())
 	var new_delay: float  = randf_range(weed_spawn_delay - weed_spawn_delay_variance, weed_spawn_delay + weed_spawn_delay_variance)
 	set_weed_timer(new_delay)	
-	print("Timer fired, Next delay: ", new_delay )
-	print("current weed count: ", current_weeds.size())
-	print("current weeds: ", current_weeds)
-
-# Temp for testing purposes.
-func _input(event):
-	if Input.is_action_just_pressed("mouse_left"):
-		harvest_weed(local_to_map(get_global_mouse_position()))
+	#print("Timer fired, Next delay: ", new_delay )
+	#print("current weed count: ", current_weeds.size())
+	#print("current weeds: ", current_weeds)
 
 ################################################################################
 """
@@ -81,15 +76,15 @@ func find_spawn_tiles(tilemap_area: Rect2i) -> Array[Vector2i]:
 				if crop_found: #extra check for debugging, could be removed.
 					crop_tiles += 1
 	#extra logs, coudl be removed. 
-	print("Found: ", found_tiles.size(), "Min: ", found_tiles.min(), "Max: ", found_tiles.max())
-	print("Weed tiles: ", weed_tiles)
-	print("Crop tiles: ", crop_tiles)
+	#print("Found: ", found_tiles.size(), "Min: ", found_tiles.min(), "Max: ", found_tiles.max())
+	#print("Weed tiles: ", weed_tiles)
+	#print("Crop tiles: ", crop_tiles)
 	return found_tiles
 
 func spawn_weeds(spawn_count: int) -> void:
 	#print("Spawn weeds: ", spawn_count)
 	if spawn_count == 0 or current_weeds.size() >= max_spawned_weeds:
-		print("spawn count or max hit")
+		#print("spawn count or max hit")
 		return
 	var spawn_pos:Vector2i = spawn_tiles[randi_range(0,spawn_tiles.size()-1)]
 	var tile = get_cell_tile_data(PLANT_OBJECT_LAYER, spawn_pos)
@@ -109,23 +104,23 @@ func grow_weed(weed_position: Vector2i, max_level: int = 2) -> void:
 		if  current_weed_levels[index] < max_level:
 			current_weed_levels[index] += 1
 			set_cell(PLANT_OBJECT_LAYER, current_weeds[index], PLANT_TILE_SOURCE, Vector2i(0 , current_weed_levels[index])) # 0 is level one.
-			print("Growing weed, ", current_weeds[index], " from level ", current_weed_levels[index] - 1, " to ", current_weed_levels[index])
+			#print("Growing weed, ", current_weeds[index], " from level ", current_weed_levels[index] - 1, " to ", current_weed_levels[index])
 
 # this function has a lot of break points and needs testing.
 func harvest_weed(weed_position: Vector2i) -> void:
 	var harvest_tile = get_cell_atlas_coords(PLANT_OBJECT_LAYER, weed_position) # Get the plant layer tile
 	var logistics_tile = get_cell_tile_data(LOGISTICS_OBJECT_LAYER, weed_position) # Confirm that it is a tile that can have a weed.
 	var index = current_weeds.find(weed_position)
-	print("Harvest_tile: ", harvest_tile)
+	#print("Harvest_tile: ", harvest_tile)
 	if logistics_tile and index != -1:
 		var weed_tile = logistics_tile.get_custom_data(CAN_GROW_WEEDS)
 		if weed_tile and harvest_tile.y == 0:
-			print("Harvested Weed at ", weed_position)
+			#print("Harvested Weed at ", weed_position)
 			current_weed_levels.remove_at(index)
 			current_weeds.remove_at(index)
 			set_cell(PLANT_OBJECT_LAYER, weed_position, -1)
 		else:
-			print("Reduced Weed at ", weed_position)
+			#print("Reduced Weed at ", weed_position)
 			current_weed_levels[index] -= 1
 			set_cell(PLANT_OBJECT_LAYER, weed_position, PLANT_TILE_SOURCE, Vector2i(0, current_weed_levels[index]))
 			
