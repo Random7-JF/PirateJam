@@ -41,24 +41,22 @@ func _input(event):
 		print("Current crop: ", current_crop)
 	if Input.is_action_just_pressed("mouse_left"):
 		plant_crop(tile_map.local_to_map(get_global_mouse_position()))
-		print(current_crops_pos)
-		print(current_crops_data)
-
 
 ################################################################
 
 func plant_crop(crop_position: Vector2i) -> void:
 	var logistics_tile = tile_map.get_cell_tile_data(LOGISTICS_OBJECT_LAYER, crop_position)
 	if logistics_tile: # null check before custom data
-		if logistics_tile.get_custom_data(CAN_GROW_CROPS): # crop tile found
+		if logistics_tile.get_custom_data(CAN_GROW_CROPS) and current_crop != -1: # crop tile found
 			#check if weed or crop is there
 			if tile_map.get_cell_atlas_coords(PLANT_OBJECT_LAYER,crop_position):
 				#plant seedling
 				#implement recursive handler function based on a timer.
+				#Switch on current_crop here, crop type not needed for handle func, just atlas coords
 				handle_crop(current_crop, crop_position, CARROT_TILES, 0, CARROT_STAGES)
 				#add to crop array for reference later
-				#current_crops_pos.append(crop_position)
-				#current_crops_data.append(Vector2i(-1, current_crop))
+				current_crops_pos.append(crop_position)
+				current_crops_data.append(Vector2i(0, current_crop))
 
 #recursive func
 func handle_crop(crop: CropType, crop_position: Vector2i, atlas_coords: Vector2i, cur_level: int, max_level: int) -> void:
@@ -73,5 +71,8 @@ func handle_crop(crop: CropType, crop_position: Vector2i, atlas_coords: Vector2i
 		return # Done with the crop
 	else:
 		var new_atlas: Vector2i = Vector2i(atlas_coords.x + 1, atlas_coords.y)
+		var index = current_crops_pos.find(crop_position)
+		current_crops_data[index] = Vector2i(cur_level + 1, current_crops_data[index].y)
+		print("Data: ", current_crops_data)
 		handle_crop(crop,crop_position, new_atlas, cur_level+1, max_level)
 	
