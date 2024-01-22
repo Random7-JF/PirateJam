@@ -42,7 +42,7 @@ func _ready():
 
 func _on_weed_timer_timeout():
 	spawn_weeds(randi_range(0,max_weeds_per_spawn))
-	if current_weeds.size() < 1:
+	if current_weeds.size() > 1:
 		for weeds in range(1, randi_range(1,max_weeds_per_spawn)):
 			grow_weed(current_weeds.pick_random())
 	var new_delay: float  = randf_range(weed_spawn_delay - weed_spawn_delay_variance, weed_spawn_delay + weed_spawn_delay_variance)
@@ -128,6 +128,9 @@ func harvest_weed(weed_position: Vector2i) -> void:
 			print("Reduced Weed at ", weed_position)
 			current_weed_levels[index] -= 1
 			set_cell(PLANT_OBJECT_LAYER, weed_position, PLANT_TILE_SOURCE, Vector2i(0, current_weed_levels[index]))
+			
+func spread_weed() -> void:
+	pass
 
 """
 crop related functions:
