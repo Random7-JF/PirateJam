@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://wkikqlwmq0mr"]
+[gd_scene load_steps=8 format=3 uid="uid://wkikqlwmq0mr"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_mvpeb"]
 [ext_resource type="TileSet" uid="uid://hpd6gg1g3vkr" path="res://resources/world/world_tileset_custom.tres" id="1_rjmfy"]
 [ext_resource type="PackedScene" uid="uid://bggsw1fmeodv8" path="res://scenes/crop_manager/crop_manager.tscn" id="4_354c2"]
 [ext_resource type="PackedScene" uid="uid://dri0n7srpmnrf" path="res://scenes/weed_manager/weed_manager.tscn" id="5_6on4h"]
+[ext_resource type="PackedScene" uid="uid://bwudjxd4biwym" path="res://scenes/node_manager/node_manager.tscn" id="5_mfhlw"]
+[ext_resource type="Script" path="res://scenes/node_manager/node_manager.gd" id="6_v0yrm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_umqdg"]
 vertices = PackedVector2Array(794, 381, -153, 382, 232, 333, 276, 333, 84, 333, 552, 77, 552, 25, 564, 25, 564, 333, 392, 237, 392, 185, 468, 185, 468, 333, 296, 13, 340, -7, 340, 31, 276, 185, 296, -103, 793, -191, 616, 333, 616, 25, -155, -191, 84, 185, 424, 31, 424, -7, 468, 25, 468, 141, 264, -103, 264, -135, 180, -135, 180, -103, 148, -103, 520, 141, 520, 77, 552, 281, 552, 333, 520, 281, 520, 185, 340, 249, 340, 281, 276, 281, 276, 237, 232, 281, 136, 281, 136, 237, 232, 237, 148, 13, 232, 185, 392, 333, 392, 249)
@@ -37,8 +39,14 @@ layer_5/tile_data = PackedInt32Array(-262139, 131074, 1, -196603, 131074, 2, -13
 layer_6/name = "Structure Objects"
 layer_6/tile_data = PackedInt32Array(-196602, 131074, 6, -196601, 196610, 6)
 
-[node name="CropManager" parent="Tilemap" node_paths=PackedStringArray("tile_map") instance=ExtResource("4_354c2")]
+[node name="NodeManager" parent="Tilemap" node_paths=PackedStringArray("crop_manager", "weed_manager") instance=ExtResource("5_mfhlw")]
+script = ExtResource("6_v0yrm")
+crop_manager = NodePath("../CropManager")
+weed_manager = NodePath("../WeedManager")
+
+[node name="CropManager" parent="Tilemap" node_paths=PackedStringArray("tile_map", "node_manager") instance=ExtResource("4_354c2")]
 tile_map = NodePath("..")
+node_manager = NodePath("../NodeManager")
 
 [node name="Timers" type="Node2D" parent="Tilemap/CropManager"]
 position = Vector2(2, -3)

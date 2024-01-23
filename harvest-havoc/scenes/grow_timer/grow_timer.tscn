@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://du0dvyc337htr"]
+
+[node name="Grow_Timer" type="Timer"]
+wait_time = 10.0

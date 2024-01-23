@@ -1,3 +1,4 @@
+class_name WeedManager
 extends Node2D
 
 @export var max_spawned_weeds: int = 15
