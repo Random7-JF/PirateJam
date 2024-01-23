@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_mvpeb"]
 [ext_resource type="TileSet" uid="uid://hpd6gg1g3vkr" path="res://resources/world/world_tileset_custom.tres" id="1_rjmfy"]
-[ext_resource type="Script" path="res://scenes/tilemap/tilemap.gd" id="2_hh5on"]
 [ext_resource type="PackedScene" uid="uid://bggsw1fmeodv8" path="res://scenes/crop_manager/crop_manager.tscn" id="4_354c2"]
+[ext_resource type="PackedScene" uid="uid://dri0n7srpmnrf" path="res://scenes/weed_manager/weed_manager.tscn" id="5_6on4h"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_umqdg"]
 vertices = PackedVector2Array(794, 381, -153, 382, 232, 333, 276, 333, 84, 333, 552, 77, 552, 25, 564, 25, 564, 333, 392, 237, 392, 185, 468, 185, 468, 333, 296, 13, 340, -7, 340, 31, 276, 185, 296, -103, 793, -191, 616, 333, 616, 25, -155, -191, 84, 185, 424, 31, 424, -7, 468, 25, 468, 141, 264, -103, 264, -135, 180, -135, 180, -103, 148, -103, 520, 141, 520, 77, 552, 281, 552, 333, 520, 281, 520, 185, 340, 249, 340, 281, 276, 281, 276, 237, 232, 281, 136, 281, 136, 237, 232, 237, 148, 13, 232, 185, 392, 333, 392, 249)
@@ -36,15 +36,17 @@ layer_5/name = "Structures"
 layer_5/tile_data = PackedInt32Array(-262139, 131074, 1, -196603, 131074, 2, -131067, 131074, 3, -65531, 131074, 4, -262138, 196610, 1, -196602, 196610, 2, -131066, 196610, 3, -65530, 196610, 4, -262137, 262146, 1, -196601, 262146, 2, -131065, 262146, 3, -65529, 262146, 4, -262136, 327682, 1, -196600, 327682, 2, -131064, 327682, 3, -65528, 327682, 4, 65547, 1441792, 5, 131083, 1441792, 6, 196619, 1441792, 7, 65548, 1507328, 5, 131084, 1507328, 6, 196620, 1507328, 7)
 layer_6/name = "Structure Objects"
 layer_6/tile_data = PackedInt32Array(-196602, 131074, 6, -196601, 196610, 6)
-script = ExtResource("2_hh5on")
-max_spawned_weeds = 35
-max_weeds_per_spawn = 10
-weed_spawn_delay = 5.0
-weed_spawn_delay_variance = 2.0
 
-[node name="CropManager" parent="Tilemap" instance=ExtResource("4_354c2")]
+[node name="CropManager" parent="Tilemap" node_paths=PackedStringArray("tile_map") instance=ExtResource("4_354c2")]
+tile_map = NodePath("..")
 
-[node name="WeedTimer" type="Timer" parent="Tilemap"]
+[node name="Timers" type="Node2D" parent="Tilemap/CropManager"]
+position = Vector2(2, -3)
+
+[node name="WeedManager" parent="Tilemap" node_paths=PackedStringArray("tile_map") instance=ExtResource("5_6on4h")]
+tile_map = NodePath("..")
+
+[node name="WeedTimer" type="Timer" parent="Tilemap/WeedManager"]
 
 [node name="Nav_Area_Map" type="NavigationRegion2D" parent="."]
 visible = false
@@ -57,4 +59,4 @@ zoom = Vector2(0.65, 0.65)
 process_callback = 0
 position_smoothing_enabled = true
 
-[connection signal="timeout" from="Tilemap/WeedTimer" to="Tilemap" method="_on_weed_timer_timeout"]
+[connection signal="timeout" from="Tilemap/WeedManager/WeedTimer" to="Tilemap/WeedManager" method="_on_weed_timer_timeout"]
