@@ -15,6 +15,9 @@ const LOGISTICS_CROP_TILE: Vector2i = Vector2i(3,3)        #Tilemap Atlas Coords
 const CARROT_TILES: Vector2i = Vector2i(0,3) # end 4,3
 const CARROT_STAGES: int = 4
 
+const PARSNIP_TILES: Vector2i = Vector2i(0,4) # end 4,3
+const PARSNIP_STAGES: int = 4
+
 enum CropType {
 	CARROT, PARSNIP,
 	INVALID = -1
@@ -39,6 +42,9 @@ func _input(event):
 	if Input.is_action_just_pressed("select_one"):
 		current_crop = CropType.CARROT
 		print("Current crop: ", current_crop)
+	if Input.is_action_just_pressed("select_two"):
+		current_crop = CropType.PARSNIP
+		print("Current crop: ", current_crop)
 	if Input.is_action_just_pressed("mouse_left"):
 		plant_crop(tile_map.local_to_map(get_global_mouse_position()))
 
@@ -53,7 +59,11 @@ func plant_crop(crop_position: Vector2i) -> void:
 				#plant seedling
 				#implement recursive handler function based on a timer.
 				#Switch on current_crop here, crop type not needed for handle func, just atlas coords
-				handle_crop(current_crop, crop_position, CARROT_TILES, 0, CARROT_STAGES)
+				match current_crop:
+					CropType.CARROT:
+						handle_crop(current_crop, crop_position, CARROT_TILES, 0, CARROT_STAGES)
+					CropType.PARSNIP:
+						handle_crop(current_crop, crop_position, PARSNIP_TILES, 0, PARSNIP_STAGES)
 				#add to crop array for reference later
 				current_crops_pos.append(crop_position)
 				current_crops_data.append(Vector2i(0, current_crop))
