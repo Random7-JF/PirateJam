@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dri0n7srpmnrf"]
+
+[ext_resource type="Script" path="res://scenes/weed_manager/weed_manager.gd" id="1_0gtwl"]
+
+[node name="WeedManager" type="Node2D" node_paths=PackedStringArray("tile_map")]
+script = ExtResource("1_0gtwl")
+tile_map = NodePath("")

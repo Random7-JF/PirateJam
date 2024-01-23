@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var tile_map: TileMap
+
 const CAN_GROW_CROPS: String = "can_grow_crops"
 
 const SEEDLING_TILE_COORDS: Vector2i = Vector2i(12,9)      #Tilemap Atlas Coords
@@ -27,15 +29,6 @@ var current_crop: CropType = CropType.INVALID
 var spawn_tiles: Array[Vector2i]
 var current_crops_pos: Array[Vector2i]
 var current_crops_data: Array[Vector2i] # .x level, .y type
-
-var tile_map: TileMap
-
-func _ready():
-	tile_map = get_tree().get_current_scene().get_node("Tilemap")
-	if not tile_map:
-		printerr("crop_manager missing tilemap")
-	else:
-		print_debug("crop_manager found tilemap")
 
 # Temp for testing purposes.
 func _input(event):
@@ -75,7 +68,7 @@ func handle_crop(crop: CropType, crop_position: Vector2i, atlas_coords: Vector2i
 	else:
 		tile_map.set_cell(PLANT_OBJECT_LAYER,crop_position,PLANT_TILE_SOURCE,atlas_coords)
 	
-	await get_tree().create_timer(5.0).timeout
+	await $Timers.create_timer(5.0).timeout
 	
 	if cur_level == max_level:
 		return # Done with the crop

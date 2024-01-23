@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://hpd6gg1g3vkr"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://hpd6gg1g3vkr"]
 
 [ext_resource type="Texture2D" uid="uid://cn4t64kwwuofi" path="res://assets/spritesheets/top_down_sprites.png" id="1_bc47i"]
 [ext_resource type="Texture2D" uid="uid://bfsf6r1vvgod5" path="res://assets/spritesheets/Weeds_Crops.png" id="2_c5i38"]
 [ext_resource type="Texture2D" uid="uid://dp2ka6f3fp86f" path="res://assets/spritesheets/store.png" id="3_8bfm2"]
 [ext_resource type="Texture2D" uid="uid://6i6wylqkjfg6" path="res://assets/spritesheets/Colour_tile_sheet.png" id="4_y7y1e"]
+[ext_resource type="Texture2D" uid="uid://c0q7uh8qi6v1g" path="res://assets/spritesheets/Single_row_tiles.png" id="5_x6koo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wio3d"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -1041,6 +1042,50 @@ texture_region_size = Vector2i(32, 32)
 3:3/0/custom_data_1 = true
 3:3/0/custom_data_2 = true
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3m3ut"]
+texture = ExtResource("5_x6koo")
+margins = Vector2i(0, 16)
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:2/0 = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+5:4/0 = 0
+5:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:4/0/physics_layer_0/angular_velocity = 0.0
+5:5/0 = 0
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+5:6/0 = 0
+5:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:6/0/physics_layer_0/angular_velocity = 0.0
+5:7/0 = 0
+5:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:7/0/physics_layer_0/angular_velocity = 0.0
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -1058,3 +1103,4 @@ sources/0 = SubResource("TileSetAtlasSource_1kcfs")
 sources/1 = SubResource("TileSetAtlasSource_jb7xy")
 sources/2 = SubResource("TileSetAtlasSource_cjtqd")
 sources/3 = SubResource("TileSetAtlasSource_wg4i6")
+sources/4 = SubResource("TileSetAtlasSource_3m3ut")
