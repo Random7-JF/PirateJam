@@ -35,7 +35,7 @@ var current_crops_pos: Array[Vector2i]
 var current_crops_data: Array[Vector2i] # .x level, .y type
 
 # Temp for testing purposes.
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("select_one"):
 		current_crop = CropType.CARROT
 		print("Current crop: ", current_crop)

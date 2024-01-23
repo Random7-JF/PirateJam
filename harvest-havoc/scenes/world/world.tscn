@@ -48,13 +48,11 @@ weed_manager = NodePath("../WeedManager")
 tile_map = NodePath("..")
 node_manager = NodePath("../NodeManager")
 
-[node name="Timers" type="Node2D" parent="Tilemap/CropManager"]
-position = Vector2(2, -3)
-
-[node name="WeedManager" parent="Tilemap" node_paths=PackedStringArray("tile_map") instance=ExtResource("5_6on4h")]
+[node name="WeedManager" parent="Tilemap" node_paths=PackedStringArray("node_manager", "tile_map") instance=ExtResource("5_6on4h")]
+node_manager = NodePath("../NodeManager")
 tile_map = NodePath("..")
 
-[node name="WeedTimer" type="Timer" parent="Tilemap/WeedManager"]
+[node name="WeedSpawnTimer" type="Timer" parent="Tilemap/WeedManager" groups=["grow_timers"]]
 
 [node name="Nav_Area_Map" type="NavigationRegion2D" parent="."]
 visible = false
@@ -67,4 +65,4 @@ zoom = Vector2(0.65, 0.65)
 process_callback = 0
 position_smoothing_enabled = true
 
-[connection signal="timeout" from="Tilemap/WeedManager/WeedTimer" to="Tilemap/WeedManager" method="_on_weed_timer_timeout"]
+[connection signal="timeout" from="Tilemap/WeedManager/WeedSpawnTimer" to="Tilemap/WeedManager" method="_on_weed_timer_timeout"]

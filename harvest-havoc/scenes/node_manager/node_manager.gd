@@ -30,7 +30,7 @@ func resume_grow_timers():
 		for timer in get_tree().get_nodes_in_group(timer_group_name):
 			timer.set_paused(false)
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("pause_timers"):
 		print("Pausing..")
 		pause_grow_timers()
