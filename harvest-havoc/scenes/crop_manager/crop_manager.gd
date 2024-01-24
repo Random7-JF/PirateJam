@@ -34,17 +34,6 @@ var spawn_tiles: Array[Vector2i]
 var current_crops_pos: Array[Vector2i]
 var current_crops_data: Array[Vector2i] # .x level, .y type
 
-# Temp for testing purposes.
-func _input(_event):
-	if Input.is_action_just_pressed("select_one"):
-		current_crop = CropType.CARROT
-		print("Current crop: ", current_crop)
-	if Input.is_action_just_pressed("select_two"):
-		current_crop = CropType.PARSNIP
-		print("Current crop: ", current_crop)
-	if Input.is_action_just_pressed("mouse_left"):
-		plant_crop(tile_map.local_to_map(get_global_mouse_position()))
-
 ################################################################
 
 func plant_crop(crop_position: Vector2i) -> void:
