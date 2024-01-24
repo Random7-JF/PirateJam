@@ -11,7 +11,7 @@ signal destroy_action_taken(mouse_pos: Vector2, player_pos:Vector2)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var range: float = 1.0
+var action_range: float = 1.0
 
 enum Actions {
 	Plant,Harvest,Destroy,
@@ -33,15 +33,18 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("action"):
 		action()
 	if Input.is_action_just_pressed("select_action_1"):
 		current_action = Actions.Plant
+		print("Planting")
 	if Input.is_action_just_pressed("select_action_2"):
 		current_action = Actions.Harvest
+		print("Harvest")
 	if Input.is_action_just_pressed("select_action_3"):
 		current_action = Actions.Destroy
+		print("Destroy")
 
 ###############################################################################
 
@@ -54,13 +57,10 @@ func action():
 			print("No action")
 		Actions.Plant:
 			emit_signal("plant_action_taken", cursor_pos, global_position)
-			print("Plant signal")
 		Actions.Harvest:
 			emit_signal("harvest_action_taken", cursor_pos, global_position)
-			print("Harvest signal")
 		Actions.Destroy:
 			emit_signal("destroy_action_taken", cursor_pos, global_position)
-			print("Destroy signal")
 
 	time_since_last_action = 0.0
 	

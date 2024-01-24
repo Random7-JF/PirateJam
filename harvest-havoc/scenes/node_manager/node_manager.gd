@@ -43,7 +43,7 @@ func create_grow_timer(grow_time: float, variance: float) -> Timer:
 	timers_node.add_child(new_timer)
 	new_timer.add_to_group(timer_group_name)
 	new_timer.start()
-	#print("Create Timer: ", new_timer.name, "Wait time: ", wait_time)
+	print("Create Timer: ", new_timer.name, "Wait time: ", wait_time)
 	return new_timer
 
 # grab all timers and pause them until we call to unpause
@@ -59,38 +59,42 @@ func resume_grow_timers():
 ###############################################################################
 
 func add_weed(weed_position: Vector2i, level: int) -> void:
+	print("add_weed")
 	weeds.append(weed_position)
 	weed_levels.append(level)
+	print("Weeds: ", weeds)
+	print("Levels: ", weed_levels)
 	
-func grow_weed(weed_position: Vector2i, increase_level_by: int) -> void:
+func grow_weed(weed_position: Vector2i, level: int) -> void:
+	print("grow_weed")
 	var index = weeds.find(weed_position)
-	print("Grow Pos: ", weeds[index] ," Level: ", weed_levels[index])
-	
 	if index == -1:
 		push_error("Weed Not Found In Array")
 		return
-	weed_levels[index] += increase_level_by
+	weed_levels[index] = level
+	print("Weeds: ", weeds)
+	print("Levels: ", weed_levels)
 
-func break_weed(weed_position: Vector2i, decrease_level_by: int) -> void:
+func break_weed(weed_position: Vector2i, new_level: int) -> void:
+	print("break_weed")
 	var index = weeds.find(weed_position)
-	print("Break Pos: ", weeds[index] ," Level: ", weed_levels[index])
-	print("Current level: ", weed_levels[index], " decrease by: ", decrease_level_by, " Result: " , weed_levels[index] - decrease_level_by)
 	if index == -1:
 		push_error("Weed Not Found In Array")
 		return
-	weed_levels[index] -= decrease_level_by
+	weed_levels[index] = new_level
+	print("Weeds: ", weeds)
+	print("Levels: ", weed_levels)
 	
 func destroy_weed(weed_position: Vector2i) -> void:
+	print("destroy_weed")
 	var index = weeds.find(weed_position)
-	print("Weeds size Before: ", weeds.size())
-	print("Levels size Before: ", weed_levels.size())
 	if index == -1:
 		push_error("Weed Not Found In Array")
 		return
 	weeds.remove_at(index)
 	weed_levels.remove_at(index)
-	print("Weeds size After: ", weeds.size())
-	print("Levels size After: ", weed_levels.size())
+	print("Weeds: ", weeds)
+	print("Levels: ", weed_levels)
 
 ###############################################################################
 
@@ -112,9 +116,7 @@ func destroy_action(mouse_pos: Vector2, player_pos: Vector2):
 	var player_tile_map_pos: Vector2 = tile_map.local_to_map(player_pos)
 	#Confirm player is close enough
 	var distance = player_tile_map_pos.distance_to(tile_map_pos)
-	print("destory_action: ", tile_map_pos, " ", player_tile_map_pos, " : ", distance)
-	if distance <= player.range:
-		print("destorying")
+	if distance <= player.action_range:
 		weed_manager.destory_weed(tile_map_pos)
 
 
