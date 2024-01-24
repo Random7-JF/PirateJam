@@ -11,6 +11,7 @@ signal destroy_action_taken(mouse_pos: Vector2, player_pos:Vector2)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+var range: float = 1.0
 
 enum Actions {
 	Plant,Harvest,Destroy,

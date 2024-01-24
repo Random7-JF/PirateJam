@@ -53,8 +53,8 @@ func pause_grow_timers():
 
 # grab all timers and resume them until we call to unpause
 func resume_grow_timers():
-		for timer in get_tree().get_nodes_in_group(timer_group_name):
-			timer.set_paused(false)
+	for timer in get_tree().get_nodes_in_group(timer_group_name):
+		timer.set_paused(false)
 
 ###############################################################################
 
@@ -64,6 +64,8 @@ func add_weed(weed_position: Vector2i, level: int) -> void:
 	
 func grow_weed(weed_position: Vector2i, increase_level_by: int) -> void:
 	var index = weeds.find(weed_position)
+	print("Grow Pos: ", weeds[index] ," Level: ", weed_levels[index])
+	
 	if index == -1:
 		push_error("Weed Not Found In Array")
 		return
@@ -71,6 +73,8 @@ func grow_weed(weed_position: Vector2i, increase_level_by: int) -> void:
 
 func break_weed(weed_position: Vector2i, decrease_level_by: int) -> void:
 	var index = weeds.find(weed_position)
+	print("Break Pos: ", weeds[index] ," Level: ", weed_levels[index])
+	print("Current level: ", weed_levels[index], " decrease by: ", decrease_level_by, " Result: " , weed_levels[index] - decrease_level_by)
 	if index == -1:
 		push_error("Weed Not Found In Array")
 		return
@@ -78,11 +82,15 @@ func break_weed(weed_position: Vector2i, decrease_level_by: int) -> void:
 	
 func destroy_weed(weed_position: Vector2i) -> void:
 	var index = weeds.find(weed_position)
+	print("Weeds size Before: ", weeds.size())
+	print("Levels size Before: ", weed_levels.size())
 	if index == -1:
 		push_error("Weed Not Found In Array")
 		return
 	weeds.remove_at(index)
 	weed_levels.remove_at(index)
+	print("Weeds size After: ", weeds.size())
+	print("Levels size After: ", weed_levels.size())
 
 ###############################################################################
 
@@ -100,6 +108,13 @@ func harvest_action(mouse_pos: Vector2, player_pos: Vector2):
 	
 func destroy_action(mouse_pos: Vector2, player_pos: Vector2):
 	#Convert to tilemap local
-	var tile_map_pos = tile_map.local_to_map(mouse_pos)
-	print("destory_action: ", tile_map_pos)
+	var tile_map_pos: Vector2 = tile_map.local_to_map(mouse_pos)
+	var player_tile_map_pos: Vector2 = tile_map.local_to_map(player_pos)
 	#Confirm player is close enough
+	var distance = player_tile_map_pos.distance_to(tile_map_pos)
+	print("destory_action: ", tile_map_pos, " ", player_tile_map_pos, " : ", distance)
+	if distance <= player.range:
+		print("destorying")
+		weed_manager.destory_weed(tile_map_pos)
+
+

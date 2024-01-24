@@ -88,12 +88,13 @@ func handle_weed(weed_position: Vector2i, atlas_coords: Vector2i, current_level:
 	if current_level > max_level:
 		spread_weed(weed_position)
 		return
-
 	tile_map.set_cell(PLANT_OBJECT_LAYER, weed_position, PLANT_TILE_SOURCE, atlas_coords)
 	
 	var timer = node_manager.create_grow_timer(weed_grow_delay, weed_grow_variance)
 	await timer.timeout
 	timer.queue_free()
+	if (node_manager.weeds.find(weed_position) == -1): # weed was removed before fully growing
+		return
 	
 	emit_signal("weed_grew", weed_position, current_level + 1)
 	var new_atlas_coords: Vector2i = Vector2i(atlas_coords.x,  atlas_coords.y + 1)
@@ -103,18 +104,15 @@ func handle_weed(weed_position: Vector2i, atlas_coords: Vector2i, current_level:
 func destory_weed(weed_position: Vector2i) -> void:
 	var harvest_tile = tile_map.get_cell_atlas_coords(PLANT_OBJECT_LAYER, weed_position) # Get the plant layer tile
 	var logistics_tile = tile_map.get_cell_tile_data(LOGISTICS_OBJECT_LAYER, weed_position) # Confirm that it is a tile that can have a weed.
-	var index = node_manager.current_weeds.find(weed_position)
-	#print("Harvest_tile: ", harvest_tile)
+	var index = node_manager.weeds.find(weed_position)
 	if logistics_tile and index != -1:
 		var weed_tile = logistics_tile.get_custom_data(CAN_GROW_WEEDS)
-		if weed_tile and harvest_tile.y == 0:
-			#print("Harvested Weed at ", weed_position)
-			emit_signal("weed_destoyed", weed_position)
+		if weed_tile and harvest_tile.y <= 0:
+			emit_signal("weed_destroyed", weed_position)
 			tile_map.set_cell(PLANT_OBJECT_LAYER, weed_position, -1)
 		else:
-			#print("Reduced Weed at ", weed_position)
-			emit_signal("weed_broken", weed_position, 1)
-			tile_map.set_cell(PLANT_OBJECT_LAYER, weed_position, PLANT_TILE_SOURCE, Vector2i(0, node_manager.current_weed_levels[index]))
+			emit_signal("weed_break", weed_position, 1)
+			tile_map.set_cell(PLANT_OBJECT_LAYER, weed_position, PLANT_TILE_SOURCE, Vector2i(0, min( 0, node_manager.weed_levels[index] - 1 )))
 			
 func spread_weed(weed_position: Vector2i) -> void:
 	var chance = randi_range(1,100)
