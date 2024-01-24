@@ -17,7 +17,7 @@ func create_grow_timer(grow_time: float, variance: float) -> Timer:
 	timers_node.add_child(new_timer)
 	new_timer.add_to_group(timer_group_name)
 	new_timer.start()
-	print("Create Timer: ", new_timer.name, "Wait time: ", wait_time)
+	#print("Create Timer: ", new_timer.name, "Wait time: ", wait_time)
 	return new_timer
 
 # grab all timers and pause them until we call to unpause

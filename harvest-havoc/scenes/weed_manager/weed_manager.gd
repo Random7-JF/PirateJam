@@ -7,6 +7,7 @@ extends Node2D
 @export var weed_spawn_delay_variance: float = 4.0
 @export var weed_grow_delay: float = 10
 @export var weed_grow_variance: float = 3
+@export var spread_chance: int = 40
 @export var node_manager: NodeManager
 @export var tile_map: TileMap
 
@@ -47,7 +48,9 @@ func _on_weed_timer_timeout():
 	var new_delay: float  = randf_range(weed_spawn_delay - weed_spawn_delay_variance, weed_spawn_delay + weed_spawn_delay_variance)
 	set_weed_timer(new_delay)	
 
-
+func _input(_event):
+	if Input.is_action_just_pressed("mouse_left"):
+		spread_weed(tile_map.local_to_map(get_global_mouse_position()))
 ################################################################################
 """
 Weed related functions
@@ -83,8 +86,9 @@ func spawn_weeds(spawn_count: int) -> void:
 		spawn_weeds(spawn_count)
 
 func handle_weed(weed_position: Vector2i, atlas_coords: Vector2i, current_level: int, max_level: int = 2) -> void:
-	print("Params: ", weed_position, atlas_coords, current_level, max_level)
+	#print("Params: ", weed_position, atlas_coords, current_level, max_level)
 	if current_level > max_level:
+		spread_weed(weed_position)
 		return
 
 	tile_map.set_cell(PLANT_OBJECT_LAYER, weed_position, PLANT_TILE_SOURCE, atlas_coords)
@@ -114,5 +118,20 @@ func harvest_weed(weed_position: Vector2i) -> void:
 			current_weed_levels[index] -= 1
 			tile_map.set_cell(PLANT_OBJECT_LAYER, weed_position, PLANT_TILE_SOURCE, Vector2i(0, current_weed_levels[index]))
 			
-func spread_weed() -> void:
-	pass
+func spread_weed(weed_position: Vector2i) -> void:
+	var chance = randi_range(1,100)
+	#print("Spread: ", chance, " Chance: ", spread_chance, " Result: ", chance < spread_chance)
+	if chance < spread_chance:
+		var close_tiles = tile_map.get_surrounding_cells(weed_position)
+		var open_tiles: Array[Vector2i]
+		for tile in close_tiles:
+			var atlas_coords = tile_map.get_cell_atlas_coords(PLANT_OBJECT_LAYER, tile)
+			var logistics_tile = tile_map.get_cell_tile_data(LOGISTICS_OBJECT_LAYER, tile)
+			if logistics_tile:
+				var weed_tile = logistics_tile.get_custom_data(CAN_GROW_WEEDS)
+				if atlas_coords == Vector2i(-1,-1) and logistics_tile.get_custom_data(CAN_GROW_WEEDS):
+					open_tiles.append(tile)
+		
+		var spread = open_tiles.pick_random()
+		print("Weed at: ", weed_position, " Spreading to: ", spread)
+		handle_weed(spread, WEED_TILES_START, 0)
