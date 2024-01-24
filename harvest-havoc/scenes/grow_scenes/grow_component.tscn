@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://76crghnvt807"]
+
+[ext_resource type="Script" path="res://scenes/grow_scenes/GrowComponent.gd" id="1_bd2vy"]
+
+[node name="GrowComponent" type="Timer"]
+script = ExtResource("1_bd2vy")

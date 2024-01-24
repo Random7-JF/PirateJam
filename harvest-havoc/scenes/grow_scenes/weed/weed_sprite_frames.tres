@@ -1,0 +1,84 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://dby6iff68qssp"]
+
+[ext_resource type="Texture2D" uid="uid://bfsf6r1vvgod5" path="res://assets/spritesheets/Weeds_Crops.png" id="1_4xj0n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qosg3"]
+atlas = ExtResource("1_4xj0n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg07a"]
+atlas = ExtResource("1_4xj0n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6gcx"]
+atlas = ExtResource("1_4xj0n")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32xb4"]
+atlas = ExtResource("1_4xj0n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4r8m"]
+atlas = ExtResource("1_4xj0n")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_504w7"]
+atlas = ExtResource("1_4xj0n")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16hwi"]
+atlas = ExtResource("1_4xj0n")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62ij0"]
+atlas = ExtResource("1_4xj0n")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shx7b"]
+atlas = ExtResource("1_4xj0n")
+region = Rect2(64, 64, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qosg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg07a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6gcx")
+}],
+"loop": false,
+"name": &"weed_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32xb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4r8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_504w7")
+}],
+"loop": false,
+"name": &"weed_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16hwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62ij0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shx7b")
+}],
+"loop": false,
+"name": &"weed_2",
+"speed": 5.0
+}]

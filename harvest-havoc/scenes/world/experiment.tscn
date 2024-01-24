@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwwwm4ewgke3x"]
+[gd_scene load_steps=5 format=3 uid="uid://cwwwm4ewgke3x"]
 
 [ext_resource type="TileSet" uid="uid://c2odeu0j3kyyg" path="res://resources/world/experiment_tile.tres" id="1_lo8ne"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="1_y8kd8"]
+[ext_resource type="PackedScene" uid="uid://cgxmvgwlfyhte" path="res://scenes/grow_scenes/weed/weed.tscn" id="2_xhwfs"]
 [ext_resource type="PackedScene" uid="uid://jbrkfo6wci82" path="res://scenes/character/player/player.tscn" id="2_xox66"]
 
 [node name="Experiment" type="Node2D"]
@@ -22,9 +23,21 @@ layer_4/tile_data = PackedInt32Array(-917514, 131077, 1, -851978, 131077, 2, -78
 layer_5/name = "Structure Objects"
 layer_5/tile_data = PackedInt32Array(-851977, 131077, 6, -851976, 196613, 6)
 
+[node name="Plants" type="Node2D" parent="."]
+
+[node name="Weed" parent="Plants" instance=ExtResource("2_xhwfs")]
+
+[node name="Weed2" parent="Plants" instance=ExtResource("2_xhwfs")]
+position = Vector2(64, 0)
+
+[node name="Weed3" parent="Plants" instance=ExtResource("2_xhwfs")]
+position = Vector2(32, -64)
+
 [node name="Goat" parent="." instance=ExtResource("1_y8kd8")]
+position = Vector2(-96, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_xox66")]
+position = Vector2(-41, -18)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_callback = 0

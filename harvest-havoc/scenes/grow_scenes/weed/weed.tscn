@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgxmvgwlfyhte"]
+
+[ext_resource type="SpriteFrames" uid="uid://dby6iff68qssp" path="res://scenes/grow_scenes/weed/weed_sprite_frames.tres" id="1_cn7w7"]
+[ext_resource type="Script" path="res://scenes/grow_scenes/weed/weed.gd" id="1_q2fhv"]
+[ext_resource type="PackedScene" uid="uid://76crghnvt807" path="res://scenes/grow_scenes/grow_component.tscn" id="2_fix7i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yufn"]
+size = Vector2(32, 28)
+
+[node name="Weed" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_q2fhv")
+
+[node name="GrowComponent" parent="." instance=ExtResource("2_fix7i")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, -14)
+shape = SubResource("RectangleShape2D_0yufn")
+
+[node name="WeedSprites" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, -16)
+sprite_frames = ExtResource("1_cn7w7")
+animation = &"weed_2"
+
+[connection signal="timeout" from="GrowComponent" to="." method="_on_grow_component_timeout"]
