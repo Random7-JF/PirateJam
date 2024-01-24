@@ -49,11 +49,6 @@ tile_map = NodePath("..")
 node_manager = NodePath("../NodeManager")
 
 [node name="WeedManager" parent="Tilemap" node_paths=PackedStringArray("node_manager", "tile_map") instance=ExtResource("5_6on4h")]
-max_weeds_per_spawn = 10
-weed_spawn_delay = 5.0
-weed_spawn_delay_variance = 2.0
-weed_grow_delay = 5.0
-weed_grow_variance = 2.0
 node_manager = NodePath("../NodeManager")
 tile_map = NodePath("..")
 
