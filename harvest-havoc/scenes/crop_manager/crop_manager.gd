@@ -1,6 +1,10 @@
+class_name CropManager
 extends Node2D
 
 @export var tile_map: TileMap
+@export var node_manager: NodeManager
+@export var crop_grow_time: float = 30.0
+@export var crop_grow_variance: float = 6.0
 
 const CAN_GROW_CROPS: String = "can_grow_crops"
 
@@ -30,27 +34,14 @@ var spawn_tiles: Array[Vector2i]
 var current_crops_pos: Array[Vector2i]
 var current_crops_data: Array[Vector2i] # .x level, .y type
 
-# Temp for testing purposes.
-func _input(event):
-	if Input.is_action_just_pressed("select_one"):
-		current_crop = CropType.CARROT
-		print("Current crop: ", current_crop)
-	if Input.is_action_just_pressed("select_two"):
-		current_crop = CropType.PARSNIP
-		print("Current crop: ", current_crop)
-	if Input.is_action_just_pressed("mouse_left"):
-		plant_crop(tile_map.local_to_map(get_global_mouse_position()))
-
 ################################################################
 
 func plant_crop(crop_position: Vector2i) -> void:
 	var logistics_tile = tile_map.get_cell_tile_data(LOGISTICS_OBJECT_LAYER, crop_position)
 	if logistics_tile: # null check before custom data
 		if logistics_tile.get_custom_data(CAN_GROW_CROPS) and current_crop != -1: # crop tile found
-			#check if weed or crop is there
-			if tile_map.get_cell_atlas_coords(PLANT_OBJECT_LAYER,crop_position):
-				#plant seedling
-				#implement recursive handler function based on a timer.
+			#check if weed or crop is there - atlas data -1,-1 is null
+			if tile_map.get_cell_atlas_coords(PLANT_OBJECT_LAYER, crop_position) == Vector2i(-1,-1):
 				#Switch on current_crop here, crop type not needed for handle func, just atlas coords
 				match current_crop:
 					CropType.CARROT:
@@ -61,14 +52,16 @@ func plant_crop(crop_position: Vector2i) -> void:
 				current_crops_pos.append(crop_position)
 				current_crops_data.append(Vector2i(0, current_crop))
 
-#recursive func
+#Spawns the crop in, then create a timer, awaits the timer then updates the crop until its full grown. 
 func handle_crop(crop: CropType, crop_position: Vector2i, atlas_coords: Vector2i, cur_level: int, max_level: int) -> void:
 	if cur_level == 0:
 		tile_map.set_cell(PLANT_OBJECT_LAYER,crop_position,SEEDLING_TILE_SOURCE,SEEDLING_TILE_COORDS)
 	else:
 		tile_map.set_cell(PLANT_OBJECT_LAYER,crop_position,PLANT_TILE_SOURCE,atlas_coords)
 	
-	await $Timers.create_timer(5.0).timeout
+	var timer = node_manager.create_grow_timer(crop_grow_time, crop_grow_variance)
+	await timer.timeout
+	timer.queue_free()
 	
 	if cur_level == max_level:
 		return # Done with the crop
@@ -76,6 +69,4 @@ func handle_crop(crop: CropType, crop_position: Vector2i, atlas_coords: Vector2i
 		var new_atlas: Vector2i = Vector2i(atlas_coords.x + 1, atlas_coords.y)
 		var index = current_crops_pos.find(crop_position)
 		current_crops_data[index] = Vector2i(cur_level + 1, current_crops_data[index].y)
-		print("Data: ", current_crops_data)
 		handle_crop(crop,crop_position, new_atlas, cur_level+1, max_level)
-	
