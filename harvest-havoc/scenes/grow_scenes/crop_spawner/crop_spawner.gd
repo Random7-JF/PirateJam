@@ -34,15 +34,8 @@ func find_spawn_tiles(tilemap_area: Rect2i) -> Array[Vector2i]:
 						found_tiles.append(Vector2i(tile_row, tile_column))
 	return found_tiles
 
-func plant_new_crop(cursor_pos: Vector2, global_pos:Vector2):
-	#check if player is in range of cursor
-	var tile_coords: Vector2 = tile_map.local_to_map(cursor_pos)
-	var player_tile_coords: Vector2  = tile_map.local_to_map(global_pos)
-	var distance = tile_coords.distance_to(player_tile_coords)
-	#Confirm player is close enough
-	if distance > player.action_range:
-		print("to far for action")
-		return		
+func plant_new_crop(plant_pos: Vector2):
+	var tile_coords: Vector2 = tile_map.local_to_map(plant_pos)
 	#check if cursor_pos is in spawn_tiles
 	var check_index = spawn_tiles.find(Vector2i(tile_coords.x, tile_coords.y))
 	if check_index == -1:

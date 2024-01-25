@@ -828,3 +828,4 @@ parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [connection signal="body_entered" from="Action/ActionArea" to="." method="_on_action_area_body_entered"]
+[connection signal="body_exited" from="Action/ActionArea" to="." method="_on_action_area_body_exited"]

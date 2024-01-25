@@ -4,9 +4,9 @@ class_name Crop
 @onready var sprite: AnimatedSprite2D = $Sprites
 @onready var grow_component: Timer = $GrowComponent
 
-var crop_variant: int = -1
-var crop_max_level: int = 0
-var crop_level: int = 0
+@export var crop_variant: int = -1
+@export var crop_max_level: int = 0
+@export var crop_level: int = 0
 
 
 func set_up_crop(new_crop_variant: int):

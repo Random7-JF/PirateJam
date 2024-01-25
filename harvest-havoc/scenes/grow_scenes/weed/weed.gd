@@ -10,8 +10,7 @@ var weed_level: int = 0
 
 func _ready():
 	weed_variant = randi_range(0,2)
-	sprite.animation = StringName(str("weed_", weed_variant))
-	sprite.frame = weed_level
+	update_sprite()
 
 func _on_grow_component_timeout():
 	weed_level = min(weed_level + 1, weed_max_level)
@@ -21,6 +20,16 @@ func _on_grow_component_timeout():
 		grow_component.repeat_timer = false
 	else:
 		grow_component.setup_new_timer()
-
+		
+func update_sprite():
+	sprite.animation = StringName(str("weed_", weed_variant))
+	sprite.frame = weed_level
+	
 func destory():
-	print("found weed: ", name)
+	if weed_level == 0:
+		#Emit signal to game controler?
+		queue_free()
+	elif  weed_level >= 1:
+		weed_level = weed_level -1
+		update_sprite()
+		

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwwwm4ewgke3x"]
+[gd_scene load_steps=6 format=3 uid="uid://cwwwm4ewgke3x"]
 
 [ext_resource type="TileSet" uid="uid://c2odeu0j3kyyg" path="res://resources/world/experiment_tile.tres" id="1_lo8ne"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="1_y8kd8"]
 [ext_resource type="PackedScene" uid="uid://dki6bpcswv6ui" path="res://scenes/grow_scenes/plant_manager/plant_manager.tscn" id="3_eeoaq"]
 [ext_resource type="PackedScene" uid="uid://0qtt8mo4khuw" path="res://scenes/character/player_animation/player.tscn" id="4_3n3fv"]
+[ext_resource type="PackedScene" uid="uid://c6hfjiageu0qe" path="res://scenes/grow_scenes/crop/crop.tscn" id="5_co7vk"]
 
 [node name="Experiment" type="Node2D"]
 
@@ -44,6 +45,10 @@ position_smoothing_enabled = true
 
 [node name="Goat" parent="." instance=ExtResource("1_y8kd8")]
 position = Vector2(-96, 0)
+
+[node name="Crop" parent="." instance=ExtResource("5_co7vk")]
+position = Vector2(81, 0)
+crop_variant = 1
 
 [connection signal="changed" from="TileMap" to="." method="_on_tile_map_changed"]
 
