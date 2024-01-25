@@ -14,12 +14,10 @@ script = ExtResource("1_q2fhv")
 [node name="GrowComponent" parent="." instance=ExtResource("2_fix7i")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, -14)
 shape = SubResource("RectangleShape2D_0yufn")
 
 [node name="WeedSprites" type="AnimatedSprite2D" parent="."]
-position = Vector2(16, -16)
 sprite_frames = ExtResource("1_cn7w7")
-animation = &"weed_2"
+animation = &"weed_0"
 
 [connection signal="timeout" from="GrowComponent" to="." method="_on_grow_component_timeout"]

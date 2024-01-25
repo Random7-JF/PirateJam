@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://jp6msas6bess"]
+
+[ext_resource type="Script" path="res://scenes/grow_scenes/crop_spawner/crop_spawner.gd" id="1_0vova"]
+
+[node name="CropSpawner" type="Node2D"]
+script = ExtResource("1_0vova")
+
+[node name="Crops" type="Node2D" parent="."]

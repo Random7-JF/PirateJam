@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6hfjiageu0qe"]
+
+[ext_resource type="Script" path="res://scenes/grow_scenes/crop/crop.gd" id="1_bo3bp"]
+[ext_resource type="SpriteFrames" uid="uid://bdcgcle063pyh" path="res://scenes/grow_scenes/crop/crop_sprite_frames.tres" id="1_w10sl"]
+[ext_resource type="PackedScene" uid="uid://76crghnvt807" path="res://scenes/grow_scenes/grow_component.tscn" id="3_n2k4b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gaff"]
+size = Vector2(32, 32)
+
+[node name="Crop" type="Area2D"]
+script = ExtResource("1_bo3bp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1gaff")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_w10sl")
+animation = &"crop_3"
+
+[node name="GrowComponent" parent="." instance=ExtResource("3_n2k4b")]
+
+[connection signal="timeout" from="GrowComponent" to="." method="_on_grow_component_timeout"]
