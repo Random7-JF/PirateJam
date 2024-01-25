@@ -1,14 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwwwm4ewgke3x"]
+[gd_scene load_steps=5 format=3 uid="uid://cwwwm4ewgke3x"]
 
 [ext_resource type="TileSet" uid="uid://c2odeu0j3kyyg" path="res://resources/world/experiment_tile.tres" id="1_lo8ne"]
-[ext_resource type="Script" path="res://scenes/world/experiment.gd" id="1_mpj3u"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="1_y8kd8"]
 [ext_resource type="PackedScene" uid="uid://jbrkfo6wci82" path="res://scenes/character/player/player.tscn" id="2_xox66"]
 [ext_resource type="PackedScene" uid="uid://dki6bpcswv6ui" path="res://scenes/grow_scenes/plant_manager/plant_manager.tscn" id="3_eeoaq"]
-[ext_resource type="PackedScene" uid="uid://c6hfjiageu0qe" path="res://scenes/grow_scenes/crop/crop.tscn" id="6_jaylf"]
 
 [node name="Experiment" type="Node2D"]
-script = ExtResource("1_mpj3u")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_lo8ne")
@@ -27,8 +24,7 @@ layer_4/tile_data = PackedInt32Array(-917514, 131077, 1, -851978, 131077, 2, -78
 layer_5/name = "Structure Objects"
 layer_5/tile_data = PackedInt32Array(-851977, 131077, 6, -851976, 196613, 6)
 
-[node name="PlantManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_eeoaq")]
-player = NodePath("../Player")
+[node name="PlantManager" parent="." instance=ExtResource("3_eeoaq")]
 
 [node name="WeedSpawner" parent="PlantManager" index="0" node_paths=PackedStringArray("tile_map", "plant_manager", "player")]
 tile_map = NodePath("../../TileMap")
@@ -49,9 +45,6 @@ position = Vector2(-157, 207)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_callback = 0
 position_smoothing_enabled = true
-
-[node name="Crop" parent="." instance=ExtResource("6_jaylf")]
-position = Vector2(-227, 215)
 
 [connection signal="changed" from="TileMap" to="." method="_on_tile_map_changed"]
 

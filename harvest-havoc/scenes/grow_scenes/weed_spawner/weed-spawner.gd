@@ -5,6 +5,7 @@ extends Node2D
 @export var player: Player
 
 @export var max_spawned_weeds: int = 15
+@export var max_per_spawn_weeds: int = 5
 @export var weed_spawn_delay: float = 10
 @export var weed_spawn_variance: float = 2
 
@@ -21,11 +22,10 @@ var occupied_tiles: Array[Vector2i] = []
 
 func _ready():
 	spawn_tiles = find_spawn_tiles(tile_map.get_used_rect())
-	print("spawn tiles found: ", spawn_tiles.size())
 	setup_and_start_timer()
 
 func _on_spawn_timer_timeout():
-	spawn_weeds(1)
+	spawn_weeds(randi_range(0,5))
 
 func setup_and_start_timer():
 	timer.wait_time = randf_range(weed_spawn_delay - weed_spawn_variance, weed_spawn_delay + weed_spawn_variance)
@@ -45,7 +45,6 @@ func spawn_weeds(spawn_count: int) -> void:
 	plant_manager.add_plant(spawn_tile)
 	spawn_weeds(spawn_count - 1)
 
-
 func find_spawn_tiles(tilemap_area: Rect2i) -> Array[Vector2i]:
 	var found_tiles: Array[Vector2i] = []
 	for tile_column in range(tilemap_area.position.x,tilemap_area.size.x):
@@ -59,7 +58,6 @@ func find_spawn_tiles(tilemap_area: Rect2i) -> Array[Vector2i]:
 						found_tiles.append(Vector2i(tile_row, tile_column))
 	return found_tiles
 
-
 func pick_spawn_point(spawn_tiles_to_pick: Array[Vector2i], attempts: int) -> Vector2i:
 	if attempts == 0:
 		return Vector2i()
@@ -67,5 +65,4 @@ func pick_spawn_point(spawn_tiles_to_pick: Array[Vector2i], attempts: int) -> Ve
 	if plant_manager.check_for_plant(spawn_point):
 		return spawn_point
 	else:
-		print("retrying...")
 		return pick_spawn_point(spawn_tiles_to_pick, attempts - 1)
