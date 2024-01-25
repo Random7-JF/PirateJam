@@ -8,16 +8,17 @@ If the farmer fails to make their weekly quota, it's game over for the farm. But
 
 ### Inspiration
 
-Plate up
-Stardew Valley
+- Plate up
+- Stardew Valley
 
 ### Genre
 
-Strategy Game
-Farming Simulator
-Endless
+- Strategy Game
+- Farming Simulator
+- Endless
 
 ### Software
 
-Asperite / Gimp
-Godot 4.2.1
+- Asperite
+- Gimp
+- Godot 4.2.1
