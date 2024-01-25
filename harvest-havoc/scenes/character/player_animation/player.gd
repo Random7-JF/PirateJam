@@ -1,37 +1,38 @@
-class_name Player1
+class_name Player
 extends CharacterBody2D
 
 signal plant_action_taken(mouse_pos: Vector2, player_pos:Vector2)
 signal harvest_action_taken(mouse_pos: Vector2, player_pos:Vector2)
 signal destroy_action_taken(mouse_pos: Vector2, player_pos:Vector2)
 
-@export var speed: float = 100
-@export var acceleration: float = 10.0
+@export var speed: int = 100
 @export var action_cooldown: float = 1.0
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_tree = $AnimationTree
 
+var direction: Vector2 = Vector2.ZERO
 var action_range: float = 1.0
+var time_since_last_action: float = 0
+var current_action = Actions.Invalid
 
 enum Actions {
 	Plant,Harvest,Destroy,
 	Invalid = -1
 }
 
-var time_since_last_action: float = 0
-var current_action = Actions.Invalid
-
 func _ready():
-	time_since_last_action = action_cooldown
-	sprite.play("walk_down")
+	animation_tree.active = true
+
+func _process(delta):
+	update_animations()
 
 func _physics_process(delta):
-	time_since_last_action += delta
-	var direction: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down")
-	velocity.x = move_toward(velocity.x, speed * direction.x, acceleration)
-	velocity.y = move_toward(velocity.y, speed * direction.y, acceleration)
-	update_player_animation()
-
+	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	if direction:
+		velocity = direction * speed
+	else:
+		velocity = Vector2.ZERO
+		
 	move_and_slide()
 
 func _input(_event):
@@ -45,19 +46,25 @@ func _input(_event):
 		print("Harvest")
 	if Input.is_action_just_pressed("select_action_3"):
 		current_action = Actions.Destroy
-		print("Destroy")
+		print("Destroy")	
 
-###############################################################################
-func update_player_animation():
-	#Down is y 100
-	#up is y -100
-	var direction = velocity.normalized()
-	if direction.x > 0.5:
-		sprite.play("walk_right")
-	else:
-		sprite.play("walk_left")
+func _on_action_area_body_entered(body):
+	print("Player hit: ", body.name)
+	if body is Crop:
+		body.harvest()
+	if body is Weed:
+		body.destory()
 
 		
+func update_animations():
+	if direction == Vector2.ZERO:
+		animation_tree["parameters/conditions/is_idle"] = true
+		animation_tree["parameters/conditions/is_moving"] = false
+	else:
+		animation_tree["parameters/conditions/is_idle"] = false
+		animation_tree["parameters/conditions/is_moving"] = true
+		animation_tree["parameters/Idle/blend_position"] = direction
+		animation_tree["parameters/Walk/blend_position"] = direction
 	
 func action():
 	if time_since_last_action < action_cooldown:
@@ -74,5 +81,4 @@ func action():
 			emit_signal("destroy_action_taken", cursor_pos, global_position)
 
 	time_since_last_action = 0.0
-	
 
