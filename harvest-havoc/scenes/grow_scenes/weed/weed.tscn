@@ -7,8 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yufn"]
 size = Vector2(32, 28)
 
-[node name="Weed" type="Area2D"]
-collision_layer = 0
+[node name="Weed" type="StaticBody2D"]
+collision_layer = 4
 script = ExtResource("1_q2fhv")
 
 [node name="GrowComponent" parent="." instance=ExtResource("2_fix7i")]

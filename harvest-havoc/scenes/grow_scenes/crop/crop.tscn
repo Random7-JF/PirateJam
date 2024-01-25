@@ -7,7 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gaff"]
 size = Vector2(32, 32)
 
-[node name="Crop" type="Area2D"]
+[node name="Crop" type="StaticBody2D"]
+collision_layer = 4
 script = ExtResource("1_bo3bp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

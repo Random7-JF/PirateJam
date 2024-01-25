@@ -2,8 +2,8 @@
 
 [ext_resource type="TileSet" uid="uid://c2odeu0j3kyyg" path="res://resources/world/experiment_tile.tres" id="1_lo8ne"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="1_y8kd8"]
-[ext_resource type="PackedScene" uid="uid://jbrkfo6wci82" path="res://scenes/character/player/player.tscn" id="2_xox66"]
 [ext_resource type="PackedScene" uid="uid://dki6bpcswv6ui" path="res://scenes/grow_scenes/plant_manager/plant_manager.tscn" id="3_eeoaq"]
+[ext_resource type="PackedScene" uid="uid://0qtt8mo4khuw" path="res://scenes/character/player_animation/player.tscn" id="4_3n3fv"]
 
 [node name="Experiment" type="Node2D"]
 
@@ -36,15 +36,14 @@ tile_map = NodePath("../../TileMap")
 plant_manager = NodePath("..")
 player = NodePath("../../Player")
 
-[node name="Goat" parent="." instance=ExtResource("1_y8kd8")]
-position = Vector2(-96, 0)
-
-[node name="Player" parent="." instance=ExtResource("2_xox66")]
-position = Vector2(-157, 207)
+[node name="Player" parent="." instance=ExtResource("4_3n3fv")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="Goat" parent="." instance=ExtResource("1_y8kd8")]
+position = Vector2(-96, 0)
 
 [connection signal="changed" from="TileMap" to="." method="_on_tile_map_changed"]
 

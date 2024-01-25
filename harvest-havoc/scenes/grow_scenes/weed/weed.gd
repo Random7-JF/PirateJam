@@ -1,4 +1,5 @@
-extends Area2D
+extends StaticBody2D
+class_name Weed
 
 @onready var sprite: AnimatedSprite2D = $WeedSprites
 @onready var grow_component: Timer = $GrowComponent
@@ -20,3 +21,6 @@ func _on_grow_component_timeout():
 		grow_component.repeat_timer = false
 	else:
 		grow_component.setup_new_timer()
+
+func destory():
+	print("found weed: ", name)

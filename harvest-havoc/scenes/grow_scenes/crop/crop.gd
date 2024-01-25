@@ -1,4 +1,5 @@
-extends Area2D
+extends StaticBody2D
+class_name Crop
 
 @onready var sprite: AnimatedSprite2D = $Sprites
 @onready var grow_component: Timer = $GrowComponent
@@ -13,6 +14,9 @@ func set_up_crop(new_crop_variant: int):
 	sprite.set_animation(StringName(str("crop_0")))
 	sprite.frame = crop_level
 	crop_max_level = sprite.get_sprite_frames().get_frame_count(sprite.animation)
+
+func harvest():
+	print("HARVEST!!!")
 
 func _on_grow_component_timeout():
 	crop_level = min(crop_level + 1, crop_max_level)
