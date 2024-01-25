@@ -23,13 +23,14 @@ var current_action = Actions.Invalid
 
 func _ready():
 	time_since_last_action = action_cooldown
-	sprite.play("default")
+	sprite.play("walk_down")
 
 func _physics_process(delta):
 	time_since_last_action += delta
 	var direction: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down")
 	velocity.x = move_toward(velocity.x, speed * direction.x, acceleration)
 	velocity.y = move_toward(velocity.y, speed * direction.y, acceleration)
+	update_player_animation()
 
 	move_and_slide()
 
@@ -47,7 +48,17 @@ func _input(_event):
 		print("Destroy")
 
 ###############################################################################
+func update_player_animation():
+	#Down is y 100
+	#up is y -100
+	var direction = velocity.normalized()
+	if direction.x > 0.5:
+		sprite.play("walk_right")
+	else:
+		sprite.play("walk_left")
 
+		
+	
 func action():
 	if time_since_last_action < action_cooldown:
 		return

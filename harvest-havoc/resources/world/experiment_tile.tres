@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=11 format=3 uid="uid://c2odeu0j3kyyg"]
 
 [ext_resource type="Texture2D" uid="uid://cn4t64kwwuofi" path="res://assets/spritesheets/top_down_sprites.png" id="1_ei2fx"]
-[ext_resource type="Texture2D" uid="uid://bm0i11yvr2mgx" path="res://assets/spritesheets/Pond.png" id="2_ewcll"]
+[ext_resource type="Texture2D" uid="uid://2lknfjocv2kh" path="res://assets/spritesheets/Pond.png" id="2_ewcll"]
 [ext_resource type="Texture2D" uid="uid://c0q7uh8qi6v1g" path="res://assets/spritesheets/Single_row_tiles.png" id="3_gubh6"]
 [ext_resource type="Texture2D" uid="uid://6i6wylqkjfg6" path="res://assets/spritesheets/Colour_tile_sheet.png" id="4_0rj74"]
 [ext_resource type="Texture2D" uid="uid://dp2ka6f3fp86f" path="res://assets/spritesheets/store.png" id="5_sk3qu"]
