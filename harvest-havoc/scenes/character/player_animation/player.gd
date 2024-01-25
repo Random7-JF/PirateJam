@@ -38,7 +38,7 @@ func _physics_process(_delta):
 		velocity = direction * speed
 	else:
 		velocity = Vector2.ZERO
-		
+	
 	move_and_slide()
 
 func _input(_event):
@@ -57,9 +57,11 @@ func _input(_event):
 func _on_action_area_body_entered(body):
 	plant_body = body
 	
-func _on_action_area_body_exited(_body):
-	plant_body = null
-
+func _on_action_area_body_exited(body):
+	if action_area.has_overlapping_bodies():
+		plant_body = action_area.get_overlapping_bodies()[0]
+	else:
+		plant_body = null
 		
 func update_animations():
 	if direction == Vector2.ZERO:
@@ -84,8 +86,7 @@ func action():
 				plant_body.harvest()
 			elif plant_body is Weed and current_action == Actions.Destroy:
 				plant_body.destory()
-
-		
+	
 	time_since_last_action = 0.0
 
 

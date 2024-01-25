@@ -26,10 +26,12 @@ func update_sprite():
 	sprite.frame = weed_level
 	
 func destory():
+	grow_component.paused = true
 	if weed_level == 0:
 		#Emit signal to game controler?
 		queue_free()
 	elif  weed_level >= 1:
 		weed_level = weed_level -1
 		update_sprite()
-		
+	grow_component.setup_new_timer()
+	grow_component.paused = false
