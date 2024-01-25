@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2lknfjocv2kh"
-path="res://.godot/imported/Pond.png-2ba16c2493c31b74b7c9d30b98dc3d54.ctex"
+uid="uid://dbikfaogtx1og"
+path="res://.godot/imported/Player_seeds.png-bde60b7929fc2f237409efae63a06b8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/Pond.png"
-dest_files=["res://.godot/imported/Pond.png-2ba16c2493c31b74b7c9d30b98dc3d54.ctex"]
+source_file="res://assets/spritesheets/Player_seeds.png"
+dest_files=["res://.godot/imported/Player_seeds.png-bde60b7929fc2f237409efae63a06b8f.ctex"]
 
 [params]
 

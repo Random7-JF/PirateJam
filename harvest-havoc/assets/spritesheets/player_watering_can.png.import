@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2lknfjocv2kh"
-path="res://.godot/imported/Pond.png-2ba16c2493c31b74b7c9d30b98dc3d54.ctex"
+uid="uid://b55gtx1fvktvm"
+path="res://.godot/imported/player_watering_can.png-ecb920285288b49dc66d4531cc90e11c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/Pond.png"
-dest_files=["res://.godot/imported/Pond.png-2ba16c2493c31b74b7c9d30b98dc3d54.ctex"]
+source_file="res://assets/spritesheets/player_watering_can.png"
+dest_files=["res://.godot/imported/player_watering_can.png-ecb920285288b49dc66d4531cc90e11c.ctex"]
 
 [params]
 

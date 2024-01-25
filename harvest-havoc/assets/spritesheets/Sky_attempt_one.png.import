@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2lknfjocv2kh"
-path="res://.godot/imported/Pond.png-2ba16c2493c31b74b7c9d30b98dc3d54.ctex"
+uid="uid://coseuyee2y86a"
+path="res://.godot/imported/Sky_attempt_one.png-e8048740e708b1a0c65c096aa80b0fe6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/Pond.png"
-dest_files=["res://.godot/imported/Pond.png-2ba16c2493c31b74b7c9d30b98dc3d54.ctex"]
+source_file="res://assets/spritesheets/Sky_attempt_one.png"
+dest_files=["res://.godot/imported/Sky_attempt_one.png-e8048740e708b1a0c65c096aa80b0fe6.ctex"]
 
 [params]
 

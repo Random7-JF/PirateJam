@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2lknfjocv2kh"
-path="res://.godot/imported/Pond.png-2ba16c2493c31b74b7c9d30b98dc3d54.ctex"
+uid="uid://ce0vln7hglcek"
+path="res://.godot/imported/player_Scythe.png-5009f5c6981b6eb098fa286c3c137df9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/Pond.png"
-dest_files=["res://.godot/imported/Pond.png-2ba16c2493c31b74b7c9d30b98dc3d54.ctex"]
+source_file="res://assets/spritesheets/player_Scythe.png"
+dest_files=["res://.godot/imported/player_Scythe.png-5009f5c6981b6eb098fa286c3c137df9.ctex"]
 
 [params]
 
