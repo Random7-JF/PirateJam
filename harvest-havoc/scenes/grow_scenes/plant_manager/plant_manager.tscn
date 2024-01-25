@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dki6bpcswv6ui"]
+
+[ext_resource type="Script" path="res://scenes/grow_scenes/plant_manager/plant_manager.gd" id="1_boj2j"]
+[ext_resource type="PackedScene" uid="uid://nd57mgjsget6" path="res://scenes/grow_scenes/weed_spawner/weed_spawner.tscn" id="2_te3fa"]
+[ext_resource type="PackedScene" uid="uid://jp6msas6bess" path="res://scenes/grow_scenes/crop_spawner/crop_spawner.tscn" id="3_b2ie7"]
+
+[node name="PlantManager" type="Node2D"]
+script = ExtResource("1_boj2j")
+
+[node name="WeedSpawner" parent="." instance=ExtResource("2_te3fa")]
+
+[node name="CropSpawner" parent="." instance=ExtResource("3_b2ie7")]
