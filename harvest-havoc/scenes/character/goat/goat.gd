@@ -13,10 +13,10 @@ func _ready():
 
 
 func _physics_process(_delta):
-	#print("distance: ", nav.distance_to_target())
-	if not on_target:
-		var direction = (nav.get_next_path_position() - global_position).normalized()
-		nav.set_velocity(direction * speed)
+	pass
+	#if not on_target:
+		#var direction = (nav.get_next_path_position() - global_position).normalized()
+		#nav.set_velocity(direction * speed)
 
 func _on_navigation_agent_2d_target_reached():
 	print("on_navigation_agent_2d_target_reached")
