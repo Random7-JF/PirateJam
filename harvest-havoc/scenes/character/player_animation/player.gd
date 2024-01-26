@@ -62,7 +62,7 @@ func _input(_event):
 func _on_action_area_body_entered(body):
 	plant_body = body
 	
-func _on_action_area_body_exited(body):
+func _on_action_area_body_exited(_body):
 	if action_area.has_overlapping_bodies():
 		plant_body = action_area.get_overlapping_bodies()[0]
 	else:
@@ -73,7 +73,7 @@ func _on_animation_tree_animation_finished(anim_name):
 		is_destorying = false
 	if anim_name == "planting_down" or anim_name == "planting_up" or anim_name == "planting_left" or anim_name == "planting_right":
 		is_planting = false
-	if anim_name == "harvesting_down" or anim_name == "harvesting_up" or anim_name == "harvesting_left" or anim_name == "harvesting_right":
+	if anim_name == "harvest_down" or anim_name == "harvest_up" or anim_name == "harvest_left" or anim_name == "harvest_right":
 		is_harvesting = false
 		
 func update_animations():
@@ -87,9 +87,11 @@ func update_animations():
 		animation_tree["parameters/Walk/blend_position"] = direction
 		animation_tree["parameters/Destroy/blend_position"] = direction
 		animation_tree["parameters/Planting/blend_position"] = direction
+		animation_tree["parameters/Harvesting/blend_position"] = direction
 	
 	animation_tree["parameters/conditions/is_destroying"] = is_destorying
 	animation_tree["parameters/conditions/is_planting"] = is_planting
+	animation_tree["parameters/conditions/is_harvesting"] = is_harvesting
 
 func action():
 	if time_since_last_action < action_cooldown:
