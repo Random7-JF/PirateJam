@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwwwm4ewgke3x"]
+[gd_scene load_steps=12 format=3 uid="uid://cwwwm4ewgke3x"]
 
 [ext_resource type="TileSet" uid="uid://c2odeu0j3kyyg" path="res://resources/world/experiment_tile.tres" id="1_lo8ne"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="1_y8kd8"]
 [ext_resource type="PackedScene" uid="uid://dki6bpcswv6ui" path="res://scenes/grow_scenes/plant_manager/plant_manager.tscn" id="3_eeoaq"]
 [ext_resource type="PackedScene" uid="uid://0qtt8mo4khuw" path="res://scenes/character/player_animation/player.tscn" id="4_3n3fv"]
 [ext_resource type="PackedScene" uid="uid://c2h73akfle7y8" path="res://scenes/ui/ui.tscn" id="6_v1m7f"]
+[ext_resource type="PackedScene" uid="uid://be8s6f4m5v0ui" path="res://scenes/shop/shop_ui.tscn" id="7_amfm4"]
 [ext_resource type="PackedScene" uid="uid://dd0pwkk7q72w2" path="res://scenes/ui/action_bar/actionbar.tscn" id="7_oemsq"]
 [ext_resource type="PackedScene" uid="uid://duvrm4f6l6axq" path="res://scenes/sound/background_music.tscn" id="8_fbogq"]
 [ext_resource type="PackedScene" uid="uid://cgxmvgwlfyhte" path="res://scenes/grow_scenes/weed/weed.tscn" id="8_p7hal"]
+[ext_resource type="PackedScene" uid="uid://bp2rh2uaiivr7" path="res://scenes/shop/shop.tscn" id="9_6fvgn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3kaa7"]
 vertices = PackedVector2Array(586, 86, 470, 86, -150, -22, -150, -106, 586, 170, 631, -437, 635, 382, 586, 246, 586, 330, -698, 382, 150, 330, -150, 330, -586, 330, -700, -441, -586, 86, -150, -182, -150, -266, -266, -266, -150, 170, -150, 86, 150, 86, -266, -214, -202, -214, -202, -182, -202, -106, -202, -74, -534, -74, -534, -214, -278, -214, 470, 138, 534, 138, 534, 170, 534, 246, 534, 278, 202, 278, 202, 138, 458, 138, -266, 138, -202, 138, -202, 170, -150, 246, -278, 138, -202, 246, -534, 138, -202, 278, -534, 278, -266, 86, -278, 86, -278, -266, -586, -266, 458, 86, -586, -22)
@@ -47,7 +49,8 @@ tile_map = NodePath("../../TileMap")
 plant_manager = NodePath("..")
 player = NodePath("../../Player")
 
-[node name="Player" parent="." instance=ExtResource("4_3n3fv")]
+[node name="Player" parent="." node_paths=PackedStringArray("shop_ui") instance=ExtResource("4_3n3fv")]
+shop_ui = NodePath("../UI/shop_ui")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_callback = 0
@@ -63,9 +66,14 @@ follow_viewport_enabled = false
 [node name="Actionbar" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("7_oemsq")]
 player = NodePath("../../Player")
 
+[node name="shop_ui" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("7_amfm4")]
+visible = false
+player = NodePath("../../Player")
+
 [node name="BackgroundMusic" parent="." instance=ExtResource("8_fbogq")]
 
 [node name="Nav" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_3kaa7")
 
 [node name="Weed" parent="." instance=ExtResource("8_p7hal")]
@@ -76,6 +84,10 @@ position = Vector2(-63, -112)
 
 [node name="Weed3" parent="." instance=ExtResource("8_p7hal")]
 position = Vector2(-11, -95)
+
+[node name="Shop" parent="." instance=ExtResource("9_6fvgn")]
+position = Vector2(-297, -337)
+scale = Vector2(8.96, 2.48)
 
 [connection signal="changed" from="TileMap" to="." method="_on_tile_map_changed"]
 

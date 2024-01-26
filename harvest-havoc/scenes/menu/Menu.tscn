@@ -1,0 +1,136 @@
+[gd_scene load_steps=13 format=3 uid="uid://8eaagg6cas62"]
+
+[ext_resource type="Texture2D" uid="uid://puo56211nmjt" path="res://assets/game_menu/board.png" id="1_2m4k3"]
+[ext_resource type="Texture2D" uid="uid://coseuyee2y86a" path="res://assets/spritesheets/Sky_attempt_one.png" id="1_mijuf"]
+[ext_resource type="Texture2D" uid="uid://coqrhbblagvr8" path="res://assets/game_menu/bg.png" id="2_7bkws"]
+[ext_resource type="Texture2D" uid="uid://lgtike8lhwwj" path="res://assets/game_menu/goat_poster.png" id="4_1wc66"]
+[ext_resource type="Texture2D" uid="uid://br8obgg6r36mt" path="res://assets/game_menu/title_poster.png" id="5_f4ir5"]
+[ext_resource type="Texture2D" uid="uid://bgn4mwqlkqjxt" path="res://assets/game_menu/poster_one.png" id="6_2p0tt"]
+[ext_resource type="Texture2D" uid="uid://c8gk0brmirb5f" path="res://assets/game_menu/poster_two.png" id="7_w8cdu"]
+[ext_resource type="Texture2D" uid="uid://cgkb4u5do5684" path="res://assets/game_menu/poster_three.png" id="8_20m4v"]
+[ext_resource type="FontFile" uid="uid://cin4os6hnhlvg" path="res://assets/font/Ronysiswadi15-51Dv8.ttf" id="9_laxt6"]
+[ext_resource type="PackedScene" uid="uid://duvrm4f6l6axq" path="res://scenes/sound/background_music.tscn" id="10_jmh6i"]
+[ext_resource type="AudioStream" uid="uid://cyya2b8hywn1c" path="res://assets/sound/music/Farming RPG Music Asset Pack/MP3/OST 1 - Good Morning.mp3" id="11_kmmt2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gcy2m"]
+font = ExtResource("9_laxt6")
+font_size = 15
+
+[node name="Menu" type="CanvasLayer"]
+
+[node name="BG" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sky" type="TextureRect" parent="BG"]
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 230.0
+offset_bottom = 230.0
+scale = Vector2(2.62514, 1.61201)
+texture = ExtResource("1_mijuf")
+
+[node name="TextureRect" type="TextureRect" parent="BG"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 48.0
+offset_right = 1906.0
+offset_bottom = 1128.0
+scale = Vector2(0.35, 0.344)
+texture = ExtResource("2_7bkws")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -2.0
+offset_top = -4.0
+offset_right = 320.0
+offset_bottom = 190.0
+scale = Vector2(2.0459, 2.0459)
+texture = ExtResource("1_2m4k3")
+
+[node name="Board_Items" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Harvest-Havoc" type="TextureRect" parent="Board_Items"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 234.0
+offset_top = 15.0
+offset_right = 321.0
+offset_bottom = 68.0
+grow_horizontal = 2
+texture = ExtResource("5_f4ir5")
+
+[node name="Goat Poster" type="TextureRect" parent="Board_Items"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 506.0
+offset_top = 4.0
+offset_right = 594.0
+offset_bottom = 71.0
+grow_horizontal = 0
+texture = ExtResource("4_1wc66")
+
+[node name="Poster" type="TextureRect" parent="Board_Items"]
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 110.0
+offset_bottom = 147.0
+scale = Vector2(1.68204, 1.68204)
+texture = ExtResource("6_2p0tt")
+
+[node name="Poster2" type="TextureRect" parent="Board_Items"]
+offset_left = 482.0
+offset_top = 74.0
+offset_right = 583.0
+offset_bottom = 216.0
+scale = Vector2(1.54947, 1.54947)
+texture = ExtResource("6_2p0tt")
+
+[node name="Poster3" type="TextureRect" parent="Board_Items"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 345.0
+offset_top = 3.0
+offset_right = 451.0
+offset_bottom = 93.0
+grow_horizontal = 0
+texture = ExtResource("7_w8cdu")
+
+[node name="MenuPoster" type="TextureRect" parent="Board_Items"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 199.0
+offset_top = 58.0
+offset_right = 275.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.21542, 2.21542)
+texture = ExtResource("8_20m4v")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 20.0
+offset_top = 53.0
+offset_right = 109.0
+offset_bottom = 73.0
+text = "This is text"
+label_settings = SubResource("LabelSettings_gcy2m")
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("10_jmh6i")]
+songs = Array[AudioStream]([ExtResource("11_kmmt2")])

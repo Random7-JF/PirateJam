@@ -1,12 +1,9 @@
-[gd_scene load_steps=93 format=3 uid="uid://0qtt8mo4khuw"]
+[gd_scene load_steps=91 format=3 uid="uid://0qtt8mo4khuw"]
 
 [ext_resource type="Script" path="res://scenes/character/player_animation/player.gd" id="1_ocino"]
 [ext_resource type="Resource" uid="uid://x7fad0tavuvn" path="res://resources/crop/carrot.tres" id="2_x8cdb"]
-[ext_resource type="Resource" uid="uid://yqllmlm2m8p8" path="res://resources/crop/parsnip.tres" id="3_6x1ey"]
 [ext_resource type="Texture2D" uid="uid://c35vet0i55jqm" path="res://assets/character_spritesheets/player_walk_down.png" id="4_nd5rl"]
 [ext_resource type="Texture2D" uid="uid://ddl7mcnbv6k33" path="res://assets/spritesheets/player_walk_down.png" id="4_pc1nb"]
-[ext_resource type="Resource" uid="uid://bnti201nq82ci" path="res://resources/crop/pumpkin.tres" id="4_xrjjv"]
-[ext_resource type="Resource" uid="uid://1uuvc6e3uojf" path="res://resources/crop/tomato.tres" id="5_p7fo4"]
 [ext_resource type="Texture2D" uid="uid://b0l0llabi7fk3" path="res://assets/character_spritesheets/walking_up.png" id="5_q2m61"]
 [ext_resource type="AudioStream" uid="uid://cgshsmlalf0tx" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Seeds_1.wav" id="6_ctrk1"]
 [ext_resource type="Texture2D" uid="uid://d2pi5ckjfnnrf" path="res://assets/character_spritesheets/walking_left.png" id="6_dn00s"]
@@ -24,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://dgu32a2qadbwh" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Scythe_1.wav" id="12_qaxxo"]
 [ext_resource type="AudioStream" uid="uid://b8agwgg2t1kdx" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Scythe_2.wav" id="13_20ibg"]
 [ext_resource type="Texture2D" uid="uid://pp8evxocraoe" path="res://assets/character_spritesheets/player_seeds_up.png" id="13_a1fk8"]
+[ext_resource type="AudioStream" uid="uid://da4wcxokqhovl" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Handling_Hay_1_short.wav" id="14_v65lt"]
 [ext_resource type="Texture2D" uid="uid://b4vtheyaxcnjp" path="res://assets/character_spritesheets/player_seeds_left.png" id="14_wvrdf"]
 [ext_resource type="Texture2D" uid="uid://j5nc858xsyv3" path="res://assets/character_spritesheets/player_seeds_right.png" id="15_onbr0"]
 [ext_resource type="Texture2D" uid="uid://5e2k8vqrgwpc" path="res://assets/character_spritesheets/player_hoe_down.png" id="16_l0nf4"]
@@ -1615,11 +1613,13 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-208, -135)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 9
 script = ExtResource("1_ocino")
-seeds = Array[Resource("res://resources/crop/seed.gd")]([ExtResource("2_x8cdb"), ExtResource("3_6x1ey"), ExtResource("4_xrjjv"), ExtResource("5_p7fo4")])
+seeds = Array[Resource("res://resources/crop/seed.gd")]([ExtResource("2_x8cdb")])
 plant_sounds = Array[AudioStream]([ExtResource("6_ctrk1"), ExtResource("7_2nq2r"), ExtResource("8_q4f3e"), ExtResource("9_pbl3v")])
 harvest_sounds = Array[AudioStream]([ExtResource("10_h4ijp"), ExtResource("11_l36if")])
 destroy_sounds = Array[AudioStream]([ExtResource("12_qaxxo"), ExtResource("13_20ibg")])
+shop_sound = ExtResource("14_v65lt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_60k4h")

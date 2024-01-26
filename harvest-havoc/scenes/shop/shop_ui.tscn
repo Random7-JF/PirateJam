@@ -1,0 +1,249 @@
+[gd_scene load_steps=7 format=3 uid="uid://be8s6f4m5v0ui"]
+
+[ext_resource type="Script" path="res://scenes/shop/shop_ui.gd" id="1_i1324"]
+[ext_resource type="Texture2D" uid="uid://chf1u0w0pv8m4" path="res://assets/Store_menu/selected_text_box_empty.png" id="1_n1v5h"]
+[ext_resource type="Texture2D" uid="uid://du02gcubmw4nu" path="res://assets/Store_menu/text_box_empty.png" id="2_6fb4y"]
+[ext_resource type="Texture2D" uid="uid://dtv54i45ak4uu" path="res://assets/spritesheets/currency_coin.png" id="3_n7rg3"]
+[ext_resource type="FontFile" uid="uid://cin4os6hnhlvg" path="res://assets/font/Ronysiswadi15-51Dv8.ttf" id="3_xe4wk"]
+[ext_resource type="Texture2D" uid="uid://bii81btf7on0t" path="res://assets/Store_menu/currency_menu_empty.png" id="4_0yf00"]
+
+[node name="shop_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_i1324")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = 181.0
+grow_horizontal = 2
+
+[node name="Currency" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="TextureRect" parent="HBoxContainer/Currency"]
+layout_mode = 2
+texture = ExtResource("4_0yf00")
+
+[node name="Label" type="Label" parent="HBoxContainer/Currency/Spacer"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 69.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 22
+text = "Units"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="current_units" type="Label" parent="HBoxContainer/Currency/Spacer"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 24.0
+offset_right = 126.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 22
+text = "25
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Currency/Spacer"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 4.0
+offset_right = 174.0
+offset_bottom = 68.0
+texture = ExtResource("3_n7rg3")
+
+[node name="Buy" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer2" type="TextureRect" parent="HBoxContainer/Buy"]
+layout_mode = 2
+texture = ExtResource("4_0yf00")
+
+[node name="Label" type="Label" parent="HBoxContainer/Buy/Spacer2"]
+offset_left = 58.0
+offset_top = 21.0
+offset_right = 115.0
+offset_bottom = 58.0
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 28
+text = "Buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyGoat" type="TextureButton" parent="HBoxContainer/Buy"]
+layout_mode = 2
+texture_normal = ExtResource("1_n1v5h")
+texture_pressed = ExtResource("2_6fb4y")
+texture_hover = ExtResource("2_6fb4y")
+
+[node name="Label" type="Label" parent="HBoxContainer/Buy/BuyGoat"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -12.0
+offset_right = 74.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 22
+text = "Goat: 125
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuySeeds" type="TextureButton" parent="HBoxContainer/Buy"]
+layout_mode = 2
+texture_normal = ExtResource("1_n1v5h")
+texture_pressed = ExtResource("2_6fb4y")
+texture_hover = ExtResource("2_6fb4y")
+
+[node name="BuySeeds" type="Label" parent="HBoxContainer/Buy/BuySeeds"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -12.0
+offset_right = 74.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 22
+text = "Seeds: 20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="TextureRect" parent="HBoxContainer/Buy"]
+layout_mode = 2
+texture = ExtResource("4_0yf00")
+
+[node name="RentDue" type="Label" parent="HBoxContainer/Buy/Spacer"]
+offset_left = -10.0
+offset_top = 13.0
+offset_right = 80.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 18
+text = "Rent
+Due:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RentTotal" type="Label" parent="HBoxContainer/Buy/Spacer"]
+offset_left = 44.0
+offset_top = 21.0
+offset_right = 134.0
+offset_bottom = 58.0
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 18
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Buy/Spacer"]
+offset_left = 110.0
+offset_top = 4.0
+offset_right = 174.0
+offset_bottom = 68.0
+texture = ExtResource("3_n7rg3")
+
+[node name="PayRent" type="TextureButton" parent="HBoxContainer/Buy"]
+layout_mode = 2
+texture_normal = ExtResource("1_n1v5h")
+texture_pressed = ExtResource("2_6fb4y")
+texture_hover = ExtResource("2_6fb4y")
+
+[node name="Label" type="Label" parent="HBoxContainer/Buy/PayRent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -12.0
+offset_right = 74.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 22
+text = "Pay Rent"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sell" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="TextureRect" parent="HBoxContainer/Sell"]
+layout_mode = 2
+texture = ExtResource("4_0yf00")
+
+[node name="Label" type="Label" parent="HBoxContainer/Sell/Spacer"]
+offset_left = 58.0
+offset_top = 21.0
+offset_right = 115.0
+offset_bottom = 58.0
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 28
+text = "Sell"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Crops" type="TextureButton" parent="HBoxContainer/Sell"]
+layout_mode = 2
+texture_normal = ExtResource("1_n1v5h")
+texture_pressed = ExtResource("2_6fb4y")
+texture_hover = ExtResource("2_6fb4y")
+
+[node name="Label" type="Label" parent="HBoxContainer/Sell/Crops"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -12.0
+offset_right = 74.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xe4wk")
+theme_override_font_sizes/font_size = 22
+text = "Crops"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/Buy/BuyGoat" to="." method="_on_buy_goat_pressed"]
+[connection signal="pressed" from="HBoxContainer/Buy/BuySeeds" to="." method="_on_buy_seeds_pressed"]
+[connection signal="pressed" from="HBoxContainer/Buy/PayRent" to="." method="_on_pay_rent_pressed"]
+[connection signal="pressed" from="HBoxContainer/Sell/Crops" to="." method="_on_crops_pressed"]

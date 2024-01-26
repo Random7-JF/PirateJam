@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Seed" load_steps=4 format=3 uid="uid://1uuvc6e3uojf"]
 
 [ext_resource type="Script" path="res://resources/crop/seed.gd" id="1_wwhww"]
-[ext_resource type="Texture2D" uid="uid://cpwwj0wvx1xvb" path="res://assets/action_bar_parts/actionbar_tomato_highlighted.png" id="2_fs0qs"]
-[ext_resource type="Texture2D" uid="uid://bji7p3ycfnqiy" path="res://assets/action_bar_parts/actionbar_tomato.png" id="3_nxnei"]
+[ext_resource type="Texture2D" uid="uid://bsq6yl4hjyb7a" path="res://assets/action_bar_parts/actionbar_tomato_highlighted.png" id="2_fs0qs"]
+[ext_resource type="Texture2D" uid="uid://dv67st1wq8pj0" path="res://assets/action_bar_parts/actionbar_tomato.png" id="3_nxnei"]
 
 [resource]
 script = ExtResource("1_wwhww")
 name = "Tomato"
-count = 0
+count = 5
 seed = 2
 ui_active_texture = ExtResource("2_fs0qs")
 ui_inactive_texture = ExtResource("3_nxnei")

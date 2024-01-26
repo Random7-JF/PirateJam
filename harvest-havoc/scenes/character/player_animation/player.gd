@@ -14,14 +14,22 @@ signal change_seed(seeds: Array[Seed], current: int)
 @export var action_cooldown: float = 0.7
 @export var seeds: Array[Seed]
 
+
 @export var plant_sounds: Array[AudioStream]
 @export var harvest_sounds: Array[AudioStream]
 @export var destroy_sounds: Array[AudioStream]
+
+@export var shop_ui: Control
+@export var shop_sound: AudioStream
 
 @onready var action_area = $Action/ActionArea
 @onready var animation_tree = $AnimationTree
 @onready var audio_stream_player = $AudioStreamPlayer
 
+const CARROT = preload("res://resources/crop/carrot.tres")
+const PARSNIP = preload("res://resources/crop/parsnip.tres")
+const PUMPKIN = preload("res://resources/crop/pumpkin.tres")
+const TOMATO = preload("res://resources/crop/tomato.tres")
 
 var direction: Vector2 = Vector2.ZERO
 var action_range: float = 1.0
@@ -41,7 +49,7 @@ enum Actions {
 }
 
 func _ready():
-	add_seeds(1,5)
+	#add_seeds(1,5)
 	animation_tree.active = true
 
 func _process(delta):
@@ -61,7 +69,7 @@ func _input(_event):
 		action()
 	if Input.is_action_just_pressed("select_action_1"):
 		current_action = Actions.Plant
-		emit_signal("plant_action_selected", seeds, current_seed)
+		emit_signal("plant_action_selected", seeds, min(current_seed, seeds.size() -1))
 	if Input.is_action_just_pressed("select_action_2"):
 		current_action = Actions.Harvest
 		emit_signal("harvest_action_selected")
@@ -69,12 +77,13 @@ func _input(_event):
 		current_action = Actions.Destroy
 		emit_signal("destroy_action_selected")
 	if Input.is_action_just_pressed("cycle_seeds"):
-		if current_seed < 3:
+		if current_seed < seeds.size() - 1:
 			current_seed += 1
-		elif current_seed == 3:
+		elif current_seed == seeds.size() - 1:
 			current_seed = 0
 		print(current_seed)
-		emit_signal("change_seed", seeds, current_seed)
+		print("min: ",  min(current_seed, seeds.size() -1))		
+		emit_signal("change_seed", seeds, min(current_seed, seeds.size() -1))
 
 func _on_action_area_body_entered(body):
 	plant_body = body
@@ -133,24 +142,28 @@ func action():
 	
 	time_since_last_action = 0.0
 
+func get_current_seeds() -> Array[Seed]:
+	var cur_seeds: Array[Seed]
+	for seed in seeds:
+		if seed.count > 0:
+			cur_seeds.append(seed)
+	return cur_seeds
+
 func add_harvested_crop(crop_amount: int, crop_varaint: int):
 	print("Amount: ", crop_amount, " Variant: ", crop_varaint)
 
 func add_seeds(seed_type: int, add_count: int):
-	seeds[seed_type].count += add_count
-	print("Add Seeds to player")
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	if seed_type == 1:
+		seeds.append(PARSNIP)
+		print("Add Seeds to player")
+	if seed_type == 2:
+		seeds.append(PUMPKIN)
+		print("Add Seeds to player")
+	if seed_type == 3:
+		seeds.append(TOMATO)
+		print("Add Seeds to player")
+
+func toggle_shop_ui():
+	shop_ui.visible = !shop_ui.visible
+	audio_stream_player.stream = shop_sound
+	audio_stream_player.play()
