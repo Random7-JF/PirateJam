@@ -50,6 +50,9 @@ layer_7/tile_data = PackedInt32Array(-1245206, 1, 0, -1179670, 1, 1, -1114134, 1
 tile_map = NodePath("../../TileMap")
 plant_manager = NodePath("..")
 player = NodePath("../../Player")
+max_spawned_weeds = 40
+max_per_spawn_weeds = 15
+weed_spawn_variance = 3.0
 
 [node name="CropSpawner" parent="PlantManager" index="1" node_paths=PackedStringArray("tile_map", "plant_manager", "player")]
 tile_map = NodePath("../../TileMap")
@@ -58,7 +61,7 @@ player = NodePath("../../Player")
 
 [node name="Player" parent="." node_paths=PackedStringArray("shop_ui", "hud_ui") instance=ExtResource("2_uoddn")]
 position = Vector2(-245, -270)
-units = 999
+units = 60
 shop_ui = NodePath("../UI/shop_ui")
 hud_ui = NodePath("../UI/hud")
 

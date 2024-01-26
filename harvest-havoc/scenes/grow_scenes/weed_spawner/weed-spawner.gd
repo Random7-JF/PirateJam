@@ -14,7 +14,7 @@ extends Node2D
 @onready var weed_scene: PackedScene = preload("res://scenes/grow_scenes/weed/weed.tscn")
 
 const LOGISTICS_OBJECT_LAYER: int = 0 #Tilemap Layer Number
-const CAN_GROW_WEEDS: String = "can_grow_weeds"
+const CAN_GROW_WEEDS: String = "can_grow_crops"
 const HAS_PLANT: String = "has_plant"
 
 var spawn_tiles: Array[Vector2i] = []
@@ -25,7 +25,7 @@ func _ready():
 	setup_and_start_timer()
 
 func _on_spawn_timer_timeout():
-	spawn_weeds(randi_range(0,5))
+	spawn_weeds(randi_range(0,max_spawned_weeds))
 
 func setup_and_start_timer():
 	timer.wait_time = randf_range(weed_spawn_delay - weed_spawn_variance, weed_spawn_delay + weed_spawn_variance)

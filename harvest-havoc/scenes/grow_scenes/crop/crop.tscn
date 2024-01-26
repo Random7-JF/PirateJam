@@ -19,5 +19,7 @@ sprite_frames = ExtResource("1_w10sl")
 animation = &"crop_3"
 
 [node name="GrowComponent" parent="." instance=ExtResource("3_n2k4b")]
+grow_time = 12.0
+grow_variance = 4.0
 
 [connection signal="timeout" from="GrowComponent" to="." method="_on_grow_component_timeout"]
