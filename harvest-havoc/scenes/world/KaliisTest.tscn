@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="2_cshbr"]
 
 [node name="KaliisTest" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [113.0]
 
 [node name="TileMap" type="TileMap" parent="." groups=["navigation"]]
 position = Vector2(-2, 4)
