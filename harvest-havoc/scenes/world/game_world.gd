@@ -7,6 +7,8 @@ signal no_more_goats()
 @onready var goat_scene: PackedScene = preload("res://scenes/character/goat/goat.tscn")
 var goats: int = 1
 
+func _ready():
+	print($TileMap.get_used_rect())
 
 func spawn_goat():
 	if goats < 3:

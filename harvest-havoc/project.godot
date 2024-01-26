@@ -10,10 +10,16 @@ config_version=5
 
 [application]
 
-config/name="harvest-havoc"
-run/main_scene="res://scenes/world/experiment.tscn"
+config/name="Harvest Havoc"
+config/description="Weeds constantly spread, keep them out of your way so you can keep harvesting."
+run/main_scene="res://scenes/menu/Menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://assets/spritesheets/JamSmall.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=25
 
 [display]
 
