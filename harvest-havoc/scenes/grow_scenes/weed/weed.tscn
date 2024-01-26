@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://76crghnvt807" path="res://scenes/grow_scenes/grow_component.tscn" id="2_fix7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yufn"]
-size = Vector2(32, 28)
+size = Vector2(32, 32)
 
 [node name="Weed" type="StaticBody2D"]
 collision_layer = 4

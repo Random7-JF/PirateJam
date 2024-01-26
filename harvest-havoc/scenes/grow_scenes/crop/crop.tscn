@@ -16,7 +16,7 @@ shape = SubResource("RectangleShape2D_1gaff")
 
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_w10sl")
-animation = &"crop_3"
+animation = &"crop_0"
 
 [node name="GrowComponent" parent="." instance=ExtResource("3_n2k4b")]
 
