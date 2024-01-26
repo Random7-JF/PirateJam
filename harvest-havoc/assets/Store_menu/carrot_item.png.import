@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doixtyjcofqcd"
-path="res://.godot/imported/actionbar_hoe_highlighted.png-81b2b5d1fc83f6f11a2a408790d36475.ctex"
+uid="uid://dsr04jtelitw2"
+path="res://.godot/imported/carrot_item.png-e3712963e737d502f2e30f3f4094d219.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/action_bar_parts/actionbar_hoe_highlighted.png"
-dest_files=["res://.godot/imported/actionbar_hoe_highlighted.png-81b2b5d1fc83f6f11a2a408790d36475.ctex"]
+source_file="res://assets/Store_menu/carrot_item.png"
+dest_files=["res://.godot/imported/carrot_item.png-e3712963e737d502f2e30f3f4094d219.ctex"]
 
 [params]
 

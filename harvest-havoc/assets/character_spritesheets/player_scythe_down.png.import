@@ -10,8 +10,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/character_spritesheets/player_Scythe_down.png"
-dest_files=["res://.godot/imported/player_Scythe_down.png-64a2fa6b1bb62c6ea69857323ac187f4.ctex"]
+source_file="res://assets/character_spritesheets/player_scythe_down.png"
+dest_files=["res://.godot/imported/player_scythe_down.png-5e831a446dad7bcae29d7ed9143fbf15.ctex"]
 
 [params]
 
