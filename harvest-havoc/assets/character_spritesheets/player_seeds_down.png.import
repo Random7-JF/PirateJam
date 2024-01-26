@@ -10,8 +10,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/character_spritesheets/player_seeds_down.png"
-dest_files=["res://.godot/imported/player_seeds_down.png-477306aabee67462b7a903836d1aed4e.ctex"]
+source_file="res://assets/character_spritesheets/Player_seeds_down.png"
+dest_files=["res://.godot/imported/Player_seeds_down.png-5dd71e6947c2ae6b2a43c5473d9196ac.ctex"]
 
 [params]
 
