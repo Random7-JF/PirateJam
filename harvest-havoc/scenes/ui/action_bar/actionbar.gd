@@ -5,8 +5,6 @@ extends Control
 @onready var plant_icon = $BackgroundContainer/Icons/PlantIcon
 @onready var harvest_icon = $BackgroundContainer/Icons/HarvestIcon
 @onready var destroy_icon = $BackgroundContainer/Icons/DestroyIcon
-@onready var water_icon = $BackgroundContainer/Icons/WaterIcon
-@onready var bag_icon = $BackgroundContainer/Icons/BagIcon
 @onready var icons = $BackgroundContainer/Icons
 
 
@@ -14,10 +12,6 @@ extends Control
 @export var harvest_icon_active: Texture
 @export var destroy_icon_inactive: Texture
 @export var destroy_icon_active: Texture
-@export var water_icon_inactive: Texture
-@export var water_icon_active: Texture
-@export var bag_icon_inactive: Texture
-@export var bag_icon_active: Texture
 
 
 var seed_inactive: Texture
@@ -73,5 +67,3 @@ func set_icons_inactive():
 	plant_icon.texture = seed_inactive
 	harvest_icon.texture = harvest_icon_inactive
 	destroy_icon.texture = destroy_icon_inactive
-	water_icon.texture = water_icon_inactive
-	bag_icon.texture = bag_icon_inactive
