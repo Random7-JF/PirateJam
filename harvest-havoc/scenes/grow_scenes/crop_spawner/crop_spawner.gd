@@ -47,7 +47,7 @@ func plant_new_crop(plant_pos: Vector2):
 		var new_crop = crop_scene.instantiate()
 		new_crop.global_position = to_global(tile_map.map_to_local(tile_coords))
 		crop_node.add_child(new_crop)
-		new_crop.set_up_crop(0)
+		new_crop.set_up_crop(player.current_seed)
 		#update plant manger
 		plant_manager.add_plant(tile_coords)
 		new_crop.connect("crop_removed", remove_crop)

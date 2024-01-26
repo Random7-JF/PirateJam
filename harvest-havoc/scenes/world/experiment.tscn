@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwwwm4ewgke3x"]
+[gd_scene load_steps=8 format=3 uid="uid://cwwwm4ewgke3x"]
 
 [ext_resource type="TileSet" uid="uid://c2odeu0j3kyyg" path="res://resources/world/experiment_tile.tres" id="1_lo8ne"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="1_y8kd8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0qtt8mo4khuw" path="res://scenes/character/player_animation/player.tscn" id="4_3n3fv"]
 [ext_resource type="PackedScene" uid="uid://c6hfjiageu0qe" path="res://scenes/grow_scenes/crop/crop.tscn" id="5_co7vk"]
 [ext_resource type="PackedScene" uid="uid://c2h73akfle7y8" path="res://scenes/ui/ui.tscn" id="6_v1m7f"]
+[ext_resource type="PackedScene" uid="uid://dd0pwkk7q72w2" path="res://scenes/ui/action_bar/actionbar.tscn" id="7_oemsq"]
 
 [node name="Experiment" type="Node2D"]
 
@@ -52,6 +53,10 @@ position = Vector2(81, 0)
 crop_variant = 1
 
 [node name="UI" parent="." instance=ExtResource("6_v1m7f")]
+follow_viewport_enabled = false
+
+[node name="Actionbar" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("7_oemsq")]
+player = NodePath("../../Player")
 
 [connection signal="changed" from="TileMap" to="." method="_on_tile_map_changed"]
 
