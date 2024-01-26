@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://dd0pwkk7q72w2"]
+
+[ext_resource type="Texture2D" uid="uid://cuxyyu3c2kchv" path="res://assets/action_bar_parts/actionbar_empty.png" id="1_nerx6"]
+[ext_resource type="Script" path="res://scenes/ui/action_bar/actionbar.gd" id="1_uygmy"]
+[ext_resource type="Texture2D" uid="uid://cf37brrieayrd" path="res://assets/action_bar_parts/actionbar_carrot.png" id="2_iaihm"]
+[ext_resource type="Texture2D" uid="uid://ceekx86icunlg" path="res://assets/action_bar_parts/actionbar_hoe.png" id="3_5hmwp"]
+[ext_resource type="Texture2D" uid="uid://dsnxynjxhidy7" path="res://assets/action_bar_parts/actionbar_hoe_highlighted.png" id="3_yqvwu"]
+[ext_resource type="Texture2D" uid="uid://crpnor7v3jxt8" path="res://assets/action_bar_parts/actionbar_scythe.png" id="4_nmnwn"]
+[ext_resource type="Texture2D" uid="uid://d4idq1rn8iory" path="res://assets/action_bar_parts/actionbar_scythe_highlighted.png" id="5_118bp"]
+[ext_resource type="Texture2D" uid="uid://cs00efm2k7ijv" path="res://assets/action_bar_parts/actionbar_watercan.png" id="5_ejcgk"]
+[ext_resource type="Texture2D" uid="uid://dd50tvo787kgy" path="res://assets/action_bar_parts/actionbar_pack.png" id="6_jkqgo"]
+[ext_resource type="Texture2D" uid="uid://db6b5driwboc0" path="res://assets/action_bar_parts/actionbar_watercan_highlighted.png" id="7_7snoy"]
+[ext_resource type="Texture2D" uid="uid://dbis4ye02athm" path="res://assets/action_bar_parts/actionbar_pack_highlighted.png" id="9_5w5b8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vpjw5"]
+texture = ExtResource("1_nerx6")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[node name="Actionbar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uygmy")
+harvest_icon_inactive = ExtResource("3_5hmwp")
+harvest_icon_active = ExtResource("3_yqvwu")
+destroy_icon_inactive = ExtResource("4_nmnwn")
+destroy_icon_active = ExtResource("5_118bp")
+water_icon_inactive = ExtResource("5_ejcgk")
+water_icon_active = ExtResource("7_7snoy")
+bag_icon_inactive = ExtResource("6_jkqgo")
+bag_icon_active = ExtResource("9_5w5b8")
+
+[node name="BackgroundContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -42.0
+offset_right = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vpjw5")
+
+[node name="Icons" type="HBoxContainer" parent="BackgroundContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PlantIcon" type="TextureRect" parent="BackgroundContainer/Icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_iaihm")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="HarvestIcon" type="TextureRect" parent="BackgroundContainer/Icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_5hmwp")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DestroyIcon" type="TextureRect" parent="BackgroundContainer/Icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_nmnwn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="WaterIcon" type="TextureRect" parent="BackgroundContainer/Icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("5_ejcgk")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="BagIcon" type="TextureRect" parent="BackgroundContainer/Icons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_jkqgo")
+expand_mode = 3
+stretch_mode = 5

@@ -4,13 +4,15 @@ extends CharacterBody2D
 signal plant_action_taken(mouse_pos: Vector2, player_pos:Vector2)
 
 #Ui Signals
-signal plant_action_selected()
+signal plant_action_selected(seeds: Array[Seed], current: int)
 signal harvest_action_selected()
 signal destroy_action_selected()
+signal change_seed(seeds: Array[Seed], current: int)
 
 
 @export var speed: int = 100
 @export var action_cooldown: float = 0.7
+@export var seeds: Array[Seed]
 
 @onready var action_area = $Action/ActionArea
 @onready var animation_tree = $AnimationTree
@@ -19,6 +21,7 @@ var direction: Vector2 = Vector2.ZERO
 var action_range: float = 1.0
 var time_since_last_action: float = 0
 var current_action = Actions.Invalid
+var current_seed = 0
 
 var plant_body
 
@@ -51,13 +54,15 @@ func _input(_event):
 		action()
 	if Input.is_action_just_pressed("select_action_1"):
 		current_action = Actions.Plant
-		print("Planting")
+		emit_signal("plant_action_selected", get_all_current_seeds(), current_seed)
 	if Input.is_action_just_pressed("select_action_2"):
 		current_action = Actions.Harvest
-		print("Harvest")
+		emit_signal("harvest_action_selected")
 	if Input.is_action_just_pressed("select_action_3"):
 		current_action = Actions.Destroy
-		print("Destory")
+		emit_signal("destroy_action_selected")
+	if Input.is_action_just_pressed("cycle_seeds"):
+		emit_signal("change_seed", get_all_current_seeds(), current_seed)
 
 func _on_action_area_body_entered(body):
 	plant_body = body
@@ -113,3 +118,28 @@ func action():
 
 func add_harvested_crop(crop_amount: int, crop_varaint: int):
 	print("Amount: ", crop_amount, "Variant: ", crop_varaint)
+
+func get_all_current_seeds() -> Array[Seed]:
+	var current_seeds: Array[Seed]
+	for seed in seeds:
+		print("Seed: ", seed.name, " Count: ", seed.count)
+		if seed.count > 0:
+			current_seeds.append(seed)
+	return current_seeds
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
