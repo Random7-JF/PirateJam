@@ -23,7 +23,9 @@ extends Control
 var seed_inactive: Texture
 var seed_active: Texture
 
-var current_seed: String
+var plant_active: bool = false
+var harvest_active: bool = false
+var destroy_active: bool = false
 
 func _ready():
 	player.connect("change_seed", change_seed)
@@ -34,8 +36,17 @@ func _ready():
 func change_seed(seeds: Array[Seed], current: int):
 	seed_inactive = seeds[current].ui_inactive_texture
 	seed_active = seeds[current].ui_active_texture
+	if plant_active:
+		plant_icon.texture = seed_active
+	else:
+		plant_icon.texture = seed_inactive
+
 
 func plant_action_selected(seeds: Array[Seed], current: int):
+	plant_active = true
+	harvest_active = false
+	destroy_active = false
+	
 	seed_inactive = seeds[current].ui_inactive_texture
 	seed_active = seeds[current].ui_active_texture
 	
@@ -43,10 +54,18 @@ func plant_action_selected(seeds: Array[Seed], current: int):
 	plant_icon.texture = seed_active
 
 func harvest_action_selected():
+	plant_active = false
+	harvest_active = true
+	destroy_active = false
+	
 	set_icons_inactive()
 	harvest_icon.texture = harvest_icon_active
 
 func destroy_action_selected():
+	plant_active = false
+	harvest_active = false
+	destroy_active = true
+	
 	set_icons_inactive()
 	destroy_icon.texture = destroy_icon_active
 

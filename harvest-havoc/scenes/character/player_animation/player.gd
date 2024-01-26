@@ -35,6 +35,7 @@ enum Actions {
 }
 
 func _ready():
+	add_seeds(1,5)
 	animation_tree.active = true
 
 func _process(delta):
@@ -62,7 +63,12 @@ func _input(_event):
 		current_action = Actions.Destroy
 		emit_signal("destroy_action_selected")
 	if Input.is_action_just_pressed("cycle_seeds"):
-		emit_signal("change_seed", get_all_current_seeds(), current_seed)
+		if current_seed < 3:
+			current_seed += 1
+		elif current_seed == 3:
+			current_seed = 0
+		print(current_seed)
+		emit_signal("change_seed", seeds, current_seed)
 
 func _on_action_area_body_entered(body):
 	plant_body = body
@@ -127,7 +133,9 @@ func get_all_current_seeds() -> Array[Seed]:
 			current_seeds.append(seed)
 	return current_seeds
 
-	
+func add_seeds(seed_type: int, add_count: int):
+	seeds[seed_type].count += add_count
+	print("Add Seeds to player")
 	
 	
 	
