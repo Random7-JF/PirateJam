@@ -134,15 +134,7 @@ func action():
 	time_since_last_action = 0.0
 
 func add_harvested_crop(crop_amount: int, crop_varaint: int):
-	print("Amount: ", crop_amount, "Variant: ", crop_varaint)
-
-#func get_all_current_seeds() -> Array[Seed]:
-	#var current_seeds: Array[Seed]
-	#for seed in seeds:
-		#print("Seed: ", seed.name, " Count: ", seed.count)
-		#if seed.count > 0:
-			#current_seeds.append(seed)
-	#return current_seeds
+	print("Amount: ", crop_amount, " Variant: ", crop_varaint)
 
 func add_seeds(seed_type: int, add_count: int):
 	seeds[seed_type].count += add_count

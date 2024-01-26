@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://d10hmv0bavqpq" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Seeds_2.wav" id="7_2nq2r"]
 [ext_resource type="Texture2D" uid="uid://dr48fpmqkdw1o" path="res://assets/character_spritesheets/walking_right.png" id="7_cdhgy"]
 [ext_resource type="AudioStream" uid="uid://dtdck1b2xn5a0" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Seeds_3.wav" id="8_q4f3e"]
-[ext_resource type="Texture2D" uid="uid://nymyphnei1uu" path="res://assets/character_spritesheets/player_Scythe_down.png" id="8_xfdxa"]
+[ext_resource type="Texture2D" uid="uid://nymyphnei1uu" path="res://assets/character_spritesheets/player_scythe_down.png" id="8_xfdxa"]
 [ext_resource type="Texture2D" uid="uid://c5k1m41cxgdck" path="res://assets/character_spritesheets/player_scythe_up.png" id="9_2viso"]
 [ext_resource type="AudioStream" uid="uid://4j8kut567lc8" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Seeds_4.wav" id="9_pbl3v"]
 [ext_resource type="Texture2D" uid="uid://dg05qey2gvrm2" path="res://assets/character_spritesheets/player_scythe_left.png" id="10_1xebs"]

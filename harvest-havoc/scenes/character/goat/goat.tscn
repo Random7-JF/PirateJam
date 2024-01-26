@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bm10j5lkgvf1x"]
+[gd_scene load_steps=23 format=3 uid="uid://bm10j5lkgvf1x"]
 
 [ext_resource type="Script" path="res://scenes/character/goat/goat.gd" id="1_fc1xi"]
 [ext_resource type="Texture2D" uid="uid://cn4t64kwwuofi" path="res://assets/spritesheets/top_down_sprites.png" id="1_rmscp"]
@@ -141,8 +141,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4np2b"]
 size = Vector2(18, 12)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d182w"]
+radius = 157.115
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qd3u"]
+radius = 12.0
+height = 37.9999
+
 [node name="Goat" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 0
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_fc1xi")
@@ -150,22 +157,39 @@ script = ExtResource("1_fc1xi")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_15hdw")
-animation = &"eat_left"
-frame_progress = 0.566655
+animation = &"eat_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_4np2b")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 25.0
-target_desired_distance = 5.0
-path_max_distance = 150.0
+target_desired_distance = 25.0
+path_max_distance = 30.0
 path_postprocessing = 1
 avoidance_enabled = true
 radius = 25.0
 neighbor_distance = 100.0
 
+[node name="WeedDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeedDetector"]
+shape = SubResource("CircleShape2D_d182w")
+debug_color = Color(0.839216, 0.321569, 0.54902, 0.419608)
+
+[node name="EatingDetector" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EatingDetector"]
+position = Vector2(0, 3)
+rotation = -1.56826
+shape = SubResource("CapsuleShape2D_8qd3u")
+debug_color = Color(0, 0.647059, 0.196078, 0.419608)
+
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="body_entered" from="EatingDetector" to="." method="_on_eating_detector_body_entered"]
