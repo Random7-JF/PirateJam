@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5e2k8vqrgwpc"
-path="res://.godot/imported/player_hoe_down.png-2d0909434839a92697640994b48498ff.ctex"
+path="res://.godot/imported/player_hoe_down.png-6df0744e71801abd5597e298c0d8753b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/player_hoe_down.png"
-dest_files=["res://.godot/imported/player_hoe_down.png-2d0909434839a92697640994b48498ff.ctex"]
+source_file="res://assets/character_spritesheets/player_hoe_down.png"
+dest_files=["res://.godot/imported/player_hoe_down.png-6df0744e71801abd5597e298c0d8753b.ctex"]
 
 [params]
 

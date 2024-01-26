@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi1gjirx34yly"
-path="res://.godot/imported/player_hoe_right.png-6cbbc30ec340d149f0e5219343053e89.ctex"
+uid="uid://cegcwdrkguyai"
+path="res://.godot/imported/player_wateringcan_up.png-7b9c7e837544a180c46c0167cb5317ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character_spritesheets/player_hoe_right.png"
-dest_files=["res://.godot/imported/player_hoe_right.png-6cbbc30ec340d149f0e5219343053e89.ctex"]
+source_file="res://assets/spritesheets/player_wateringcan_up.png"
+dest_files=["res://.godot/imported/player_wateringcan_up.png-7b9c7e837544a180c46c0167cb5317ae.ctex"]
 
 [params]
 

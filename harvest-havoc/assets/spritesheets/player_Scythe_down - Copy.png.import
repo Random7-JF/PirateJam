@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi1gjirx34yly"
-path="res://.godot/imported/player_hoe_right.png-6cbbc30ec340d149f0e5219343053e89.ctex"
+uid="uid://cuvnmr88tewmm"
+path="res://.godot/imported/player_Scythe_down - Copy.png-29ce5911b9b1bc43434323941dd10fa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character_spritesheets/player_hoe_right.png"
-dest_files=["res://.godot/imported/player_hoe_right.png-6cbbc30ec340d149f0e5219343053e89.ctex"]
+source_file="res://assets/spritesheets/player_Scythe_down - Copy.png"
+dest_files=["res://.godot/imported/player_Scythe_down - Copy.png-29ce5911b9b1bc43434323941dd10fa3.ctex"]
 
 [params]
 

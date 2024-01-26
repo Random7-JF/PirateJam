@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4vtheyaxcnjp"
-path="res://.godot/imported/player_seeds_left.png-56c2aa408f939338101e07ce671d2ad3.ctex"
+path="res://.godot/imported/player_seeds_left.png-16b5ef31cac7389b4c41e0a61670dce1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/player_seeds_left.png"
-dest_files=["res://.godot/imported/player_seeds_left.png-56c2aa408f939338101e07ce671d2ad3.ctex"]
+source_file="res://assets/character_spritesheets/player_seeds_left.png"
+dest_files=["res://.godot/imported/player_seeds_left.png-16b5ef31cac7389b4c41e0a61670dce1.ctex"]
 
 [params]
 

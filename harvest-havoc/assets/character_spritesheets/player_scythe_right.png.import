@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dffa1jfhbdivg"
-path="res://.godot/imported/player_scythe_right.png-61e61db6dc26f5b66a77a1b7a5d8709d.ctex"
+path="res://.godot/imported/player_scythe_right.png-b7506776c6a9d8fbd7eb0b99702942a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/player_scythe_right.png"
-dest_files=["res://.godot/imported/player_scythe_right.png-61e61db6dc26f5b66a77a1b7a5d8709d.ctex"]
+source_file="res://assets/character_spritesheets/player_scythe_right.png"
+dest_files=["res://.godot/imported/player_scythe_right.png-b7506776c6a9d8fbd7eb0b99702942a7.ctex"]
 
 [params]
 

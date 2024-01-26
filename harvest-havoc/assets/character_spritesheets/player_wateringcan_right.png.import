@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0sgw61wdow4j"
-path="res://.godot/imported/player_wateringcan_right.png-4ba4c96965dbc3696ffa2355cfffbd4e.ctex"
+path="res://.godot/imported/player_wateringcan_right.png-bff53b9dcf5b15a26aea583e7ba6d8bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/player_wateringcan_right.png"
-dest_files=["res://.godot/imported/player_wateringcan_right.png-4ba4c96965dbc3696ffa2355cfffbd4e.ctex"]
+source_file="res://assets/character_spritesheets/player_wateringcan_right.png"
+dest_files=["res://.godot/imported/player_wateringcan_right.png-bff53b9dcf5b15a26aea583e7ba6d8bb.ctex"]
 
 [params]
 
