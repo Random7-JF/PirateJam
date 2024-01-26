@@ -19,7 +19,6 @@ var spawn_tiles: Array[Vector2i] = []
 func _ready():
 	player.connect("plant_action_taken", plant_new_crop)
 	spawn_tiles = find_spawn_tiles(tile_map.get_used_rect())
-	print("Crop tiles: ", spawn_tiles.size())
 	
 func find_spawn_tiles(tilemap_area: Rect2i) -> Array[Vector2i]:
 	var found_tiles: Array[Vector2i] = []
@@ -40,7 +39,6 @@ func plant_new_crop(plant_pos: Vector2):
 	var check_index = spawn_tiles.find(Vector2i(tile_coords.x, tile_coords.y))
 	if check_index == -1:
 		return
-	print("Found index:, ", spawn_tiles[check_index])
 	#check if the spawn_tile is open via plantmanager
 	if plant_manager.check_for_plant(tile_coords):
 		#instantiate crop
@@ -51,10 +49,9 @@ func plant_new_crop(plant_pos: Vector2):
 		#update plant manger
 		plant_manager.add_plant(tile_coords)
 		new_crop.connect("crop_removed", remove_crop)
-		print("spawned crop at: ", tile_coords)
+
 
 func remove_crop(coords: Vector2):
 	var tile_coords: Vector2 = tile_map.local_to_map(coords)
 	plant_manager.remove_plant(tile_coords)
-	print("remove crop @ ", coords)
-	
+

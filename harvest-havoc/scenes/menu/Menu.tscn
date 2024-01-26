@@ -25,6 +25,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sky" type="TextureRect" parent="BG"]
+layout_mode = 0
 offset_left = -26.0
 offset_top = -26.0
 offset_right = 230.0
@@ -80,6 +81,7 @@ grow_horizontal = 0
 texture = ExtResource("4_1wc66")
 
 [node name="Poster" type="TextureRect" parent="Board_Items"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 5.0
 offset_right = 110.0
@@ -88,6 +90,7 @@ scale = Vector2(1.68204, 1.68204)
 texture = ExtResource("6_2p0tt")
 
 [node name="Poster2" type="TextureRect" parent="Board_Items"]
+layout_mode = 0
 offset_left = 482.0
 offset_top = 74.0
 offset_right = 583.0

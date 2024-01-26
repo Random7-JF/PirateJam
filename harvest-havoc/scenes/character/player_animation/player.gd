@@ -45,6 +45,8 @@ var is_harvesting: bool = false
 
 var rent_payed: bool = false
 
+var harvested_crop: Dictionary = {}
+
 enum Actions {
 	Plant,Harvest,Destroy,
 	Invalid = -1
@@ -52,6 +54,10 @@ enum Actions {
 
 func _ready():
 	#add_seeds(1,5)
+	harvested_crop[0] = 0
+	harvested_crop[1] = 0
+	harvested_crop[2] = 0
+	harvested_crop[3] = 0
 	animation_tree.active = true
 
 func _process(delta):
@@ -152,7 +158,16 @@ func get_current_seeds() -> Array[Seed]:
 	return cur_seeds
 
 func add_harvested_crop(crop_amount: int, crop_varaint: int):
-	print("Amount: ", crop_amount, " Variant: ", crop_varaint)
+	match crop_varaint:
+		0:
+			harvested_crop[crop_varaint] = harvested_crop[crop_varaint] + (crop_amount * 2)
+		1:
+			harvested_crop[crop_varaint] = harvested_crop[crop_varaint] + (crop_amount * 3)
+		2:
+			harvested_crop[crop_varaint] = harvested_crop[crop_varaint] + (crop_amount * 3)
+		3:
+			harvested_crop[crop_varaint] = harvested_crop[crop_varaint] + (crop_amount * 4)
+	print(harvested_crop)
 
 func add_seeds(seed_type: int, add_count: int):
 	if seed_type == 1:
@@ -173,3 +188,11 @@ func toggle_shop_ui():
 func spend_units(amount: int):
 	units -= amount
 	print("Spents units, current: ", units,  " amount: ", amount)
+	
+func sell_all_crops():
+	var total_crops: int
+	for harvest in range(0,harvested_crop.size()):
+		total_crops += harvested_crop[harvest]
+		harvested_crop[harvest] = 0
+	total_crops = total_crops * 4
+	units += total_crops
