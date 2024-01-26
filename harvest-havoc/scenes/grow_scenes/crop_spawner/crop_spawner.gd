@@ -50,4 +50,11 @@ func plant_new_crop(plant_pos: Vector2):
 		new_crop.set_up_crop(0)
 		#update plant manger
 		plant_manager.add_plant(tile_coords)
+		new_crop.connect("crop_removed", remove_crop)
 		print("spawned crop at: ", tile_coords)
+
+func remove_crop(coords: Vector2):
+	var tile_coords: Vector2 = tile_map.local_to_map(coords)
+	plant_manager.remove_plant(tile_coords)
+	print("remove crop @ ", coords)
+	

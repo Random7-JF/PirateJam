@@ -72,7 +72,7 @@ func update_animations():
 		animation_tree["parameters/conditions/is_moving"] = true
 		animation_tree["parameters/Idle/blend_position"] = direction
 		animation_tree["parameters/Walk/blend_position"] = direction
-	
+
 func action():
 	if time_since_last_action < action_cooldown:
 		return
@@ -83,11 +83,13 @@ func action():
 		if plant_body != null:
 			if plant_body is Crop and current_action == Actions.Harvest:
 				print("Player Harvest Action on -> ", plant_body.name)
-				plant_body.harvest()
+				plant_body.harvest(self)
 			elif plant_body is Weed and current_action == Actions.Destroy:
 				plant_body.destory()
 	
 	time_since_last_action = 0.0
 
+func add_harvested_crop(crop_amount: int, crop_varaint: int):
+	print("Amount: ", crop_amount, "Variant: ", crop_varaint)
 
 

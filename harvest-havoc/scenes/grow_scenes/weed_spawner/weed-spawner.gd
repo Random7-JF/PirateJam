@@ -41,6 +41,7 @@ func spawn_weeds(spawn_count: int) -> void:
 	var new_weed = weed_scene.instantiate()
 	new_weed.global_position = to_global(tile_map.map_to_local(spawn_tile))
 	weed_node.add_child(new_weed)
+	new_weed.connect("weed_removed", weed_removed)
 	#Add coords to store
 	plant_manager.add_plant(spawn_tile)
 	spawn_weeds(spawn_count - 1)
@@ -66,3 +67,8 @@ func pick_spawn_point(spawn_tiles_to_pick: Array[Vector2i], attempts: int) -> Ve
 		return spawn_point
 	else:
 		return pick_spawn_point(spawn_tiles_to_pick, attempts - 1)
+
+func weed_removed(coords: Vector2):
+	var tile_coords: Vector2 = tile_map.local_to_map(coords)
+	plant_manager.remove_plant(tile_coords)
+	print("remove weed @ ", coords)
