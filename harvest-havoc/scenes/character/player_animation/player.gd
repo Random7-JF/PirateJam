@@ -9,7 +9,7 @@ signal harvest_action_selected()
 signal destroy_action_selected()
 signal change_seed(seeds: Array[Seed], current: int)
 
-
+@export var units: int = 100
 @export var speed: int = 100
 @export var action_cooldown: float = 0.7
 @export var seeds: Array[Seed]
@@ -42,6 +42,8 @@ var plant_body
 var is_destorying: bool = false
 var is_planting: bool = false
 var is_harvesting: bool = false
+
+var rent_payed: bool = false
 
 enum Actions {
 	Plant,Harvest,Destroy,
@@ -167,3 +169,7 @@ func toggle_shop_ui():
 	shop_ui.visible = !shop_ui.visible
 	audio_stream_player.stream = shop_sound
 	audio_stream_player.play()
+
+func spend_units(amount: int):
+	units -= amount
+	print("Spents units, current: ", units,  " amount: ", amount)
