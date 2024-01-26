@@ -2,13 +2,15 @@ class_name Player
 extends CharacterBody2D
 
 signal plant_action_taken(mouse_pos: Vector2, player_pos:Vector2)
+
 #Ui Signals
 signal plant_action_selected()
 signal harvest_action_selected()
 signal destroy_action_selected()
 
+
 @export var speed: int = 100
-@export var action_cooldown: float = 1.0
+@export var action_cooldown: float = 0.7
 
 @onready var action_area = $Action/ActionArea
 @onready var animation_tree = $AnimationTree
@@ -19,6 +21,10 @@ var time_since_last_action: float = 0
 var current_action = Actions.Invalid
 
 var plant_body
+
+var is_destorying: bool = false
+var is_planting: bool = false
+var is_harvesting: bool = false
 
 enum Actions {
 	Plant,Harvest,Destroy,
@@ -38,7 +44,6 @@ func _physics_process(_delta):
 		velocity = direction * speed
 	else:
 		velocity = Vector2.ZERO
-	
 	move_and_slide()
 
 func _input(_event):
@@ -62,6 +67,14 @@ func _on_action_area_body_exited(body):
 		plant_body = action_area.get_overlapping_bodies()[0]
 	else:
 		plant_body = null
+
+func _on_animation_tree_animation_finished(anim_name):
+	if anim_name == "scythe_down" or anim_name == "scythe_up" or anim_name == "scythe_left" or anim_name == "scythe_right":
+		is_destorying = false
+	if anim_name == "planting_down" or anim_name == "planting_up" or anim_name == "planting_left" or anim_name == "planting_right":
+		is_planting = false
+	if anim_name == "harvesting_down" or anim_name == "harvesting_up" or anim_name == "harvesting_left" or anim_name == "harvesting_right":
+		is_harvesting = false
 		
 func update_animations():
 	if direction == Vector2.ZERO:
@@ -72,22 +85,29 @@ func update_animations():
 		animation_tree["parameters/conditions/is_moving"] = true
 		animation_tree["parameters/Idle/blend_position"] = direction
 		animation_tree["parameters/Walk/blend_position"] = direction
+		animation_tree["parameters/Destroy/blend_position"] = direction
+		animation_tree["parameters/Planting/blend_position"] = direction
 	
+	animation_tree["parameters/conditions/is_destroying"] = is_destorying
+	animation_tree["parameters/conditions/is_planting"] = is_planting
+
 func action():
 	if time_since_last_action < action_cooldown:
 		return
 	
 	if current_action == Actions.Plant:
 		emit_signal("plant_action_taken", to_global(action_area.position))
+		is_planting = true
 	else:
 		if plant_body != null:
 			if plant_body is Crop and current_action == Actions.Harvest:
-				print("Player Harvest Action on -> ", plant_body.name)
-				plant_body.harvest()
+				is_harvesting = true
+				plant_body.harvest(self)
 			elif plant_body is Weed and current_action == Actions.Destroy:
 				plant_body.destory()
+				is_destorying = true
 	
 	time_since_last_action = 0.0
 
-
-
+func add_harvested_crop(crop_amount: int, crop_varaint: int):
+	print("Amount: ", crop_amount, "Variant: ", crop_varaint)

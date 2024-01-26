@@ -1,6 +1,8 @@
 extends StaticBody2D
 class_name Weed
 
+signal weed_removed(coords: Vector2)
+
 @onready var sprite: AnimatedSprite2D = $WeedSprites
 @onready var grow_component: Timer = $GrowComponent
 
@@ -28,7 +30,7 @@ func update_sprite():
 func destory():
 	grow_component.paused = true
 	if weed_level == 0:
-		#Emit signal to game controler?
+		emit_signal("weed_removed", global_position)
 		queue_free()
 	elif  weed_level >= 1:
 		weed_level = weed_level -1
