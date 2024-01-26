@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nymyphnei1uu"
-path="res://.godot/imported/player_scythe_down.png-5e831a446dad7bcae29d7ed9143fbf15.ctex"
+uid="uid://cjohyajdqexhb"
+path="res://.godot/imported/currency_menu_divider_thingy_idekman_just_put_the_digit_currency_in_it.png-5aec0d675432e607c3798bfd26072a45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character_spritesheets/player_scythe_down.png"
-dest_files=["res://.godot/imported/player_scythe_down.png-5e831a446dad7bcae29d7ed9143fbf15.ctex"]
+source_file="res://assets/Store_menu/currency_menu_divider_thingy_idekman_just_put_the_digit_currency_in_it.png"
+dest_files=["res://.godot/imported/currency_menu_divider_thingy_idekman_just_put_the_digit_currency_in_it.png-5aec0d675432e607c3798bfd26072a45.ctex"]
 
 [params]
 
