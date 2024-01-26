@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do3g5pfoy2x5l"
+path="res://.godot/imported/OST 4 - Dragonfly.mp3-e4947e5813c33b8174f2828ec8189d94.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/Farming RPG Music Asset Pack/MP3/OST 4 - Dragonfly.mp3"
+dest_files=["res://.godot/imported/OST 4 - Dragonfly.mp3-e4947e5813c33b8174f2828ec8189d94.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

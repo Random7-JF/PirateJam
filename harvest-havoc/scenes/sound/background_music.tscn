@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://duvrm4f6l6axq"]
+
+[ext_resource type="AudioStream" uid="uid://cyya2b8hywn1c" path="res://assets/sound/music/Farming RPG Music Asset Pack/MP3/OST 1 - Good Morning.mp3" id="1_5cio2"]
+[ext_resource type="Script" path="res://scenes/sound/background_music.gd" id="2_x4iuf"]
+[ext_resource type="AudioStream" uid="uid://cq2w87nh5xsd7" path="res://assets/sound/music/Farming RPG Music Asset Pack/MP3/OST 2 - Fate.mp3" id="3_ojvpd"]
+[ext_resource type="AudioStream" uid="uid://cfeav2f0c2ckd" path="res://assets/sound/music/Farming RPG Music Asset Pack/MP3/OST 3 - Village.mp3" id="4_cs6cv"]
+[ext_resource type="AudioStream" uid="uid://do3g5pfoy2x5l" path="res://assets/sound/music/Farming RPG Music Asset Pack/MP3/OST 4 - Dragonfly.mp3" id="5_00e6b"]
+[ext_resource type="AudioStream" uid="uid://cqrn11ryun2d0" path="res://assets/sound/music/Farming RPG Music Asset Pack/MP3/OST 5 - Seaside Promenade.mp3" id="6_o7d3r"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_5cio2")
+volume_db = -40.0
+script = ExtResource("2_x4iuf")
+songs = Array[AudioStream]([ExtResource("3_ojvpd"), ExtResource("4_cs6cv"), ExtResource("5_00e6b"), ExtResource("6_o7d3r")])
+
+[connection signal="finished" from="." to="." method="_on_finished"]

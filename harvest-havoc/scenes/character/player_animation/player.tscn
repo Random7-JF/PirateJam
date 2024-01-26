@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://0qtt8mo4khuw"]
+[gd_scene load_steps=93 format=3 uid="uid://0qtt8mo4khuw"]
 
 [ext_resource type="Script" path="res://scenes/character/player_animation/player.gd" id="1_ocino"]
 [ext_resource type="Resource" uid="uid://x7fad0tavuvn" path="res://resources/crop/carrot.tres" id="2_x8cdb"]
@@ -8,13 +8,21 @@
 [ext_resource type="Resource" uid="uid://bnti201nq82ci" path="res://resources/crop/pumpkin.tres" id="4_xrjjv"]
 [ext_resource type="Resource" uid="uid://1uuvc6e3uojf" path="res://resources/crop/tomato.tres" id="5_p7fo4"]
 [ext_resource type="Texture2D" uid="uid://b0l0llabi7fk3" path="res://assets/character_spritesheets/walking_up.png" id="5_q2m61"]
+[ext_resource type="AudioStream" uid="uid://cgshsmlalf0tx" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Seeds_1.wav" id="6_ctrk1"]
 [ext_resource type="Texture2D" uid="uid://d2pi5ckjfnnrf" path="res://assets/character_spritesheets/walking_left.png" id="6_dn00s"]
+[ext_resource type="AudioStream" uid="uid://d10hmv0bavqpq" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Seeds_2.wav" id="7_2nq2r"]
 [ext_resource type="Texture2D" uid="uid://dr48fpmqkdw1o" path="res://assets/character_spritesheets/walking_right.png" id="7_cdhgy"]
+[ext_resource type="AudioStream" uid="uid://dtdck1b2xn5a0" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Seeds_3.wav" id="8_q4f3e"]
 [ext_resource type="Texture2D" uid="uid://nymyphnei1uu" path="res://assets/character_spritesheets/player_Scythe_down.png" id="8_xfdxa"]
 [ext_resource type="Texture2D" uid="uid://c5k1m41cxgdck" path="res://assets/character_spritesheets/player_scythe_up.png" id="9_2viso"]
+[ext_resource type="AudioStream" uid="uid://4j8kut567lc8" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Seeds_4.wav" id="9_pbl3v"]
 [ext_resource type="Texture2D" uid="uid://dg05qey2gvrm2" path="res://assets/character_spritesheets/player_scythe_left.png" id="10_1xebs"]
+[ext_resource type="AudioStream" uid="uid://b2lio8d5aomk4" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Hoe_1.wav" id="10_h4ijp"]
+[ext_resource type="AudioStream" uid="uid://byds7a42qif7t" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Hoe_2.wav" id="11_l36if"]
 [ext_resource type="Texture2D" uid="uid://dffa1jfhbdivg" path="res://assets/character_spritesheets/player_scythe_right.png" id="11_xvnmt"]
 [ext_resource type="Texture2D" uid="uid://brv4c0tdd8myi" path="res://assets/character_spritesheets/Player_seeds_down.png" id="12_58ox2"]
+[ext_resource type="AudioStream" uid="uid://dgu32a2qadbwh" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Scythe_1.wav" id="12_qaxxo"]
+[ext_resource type="AudioStream" uid="uid://b8agwgg2t1kdx" path="res://assets/sound/sfx/Farm_SFX_Pack_Minifantasy_Compatible/Actions/Scythe_2.wav" id="13_20ibg"]
 [ext_resource type="Texture2D" uid="uid://pp8evxocraoe" path="res://assets/character_spritesheets/player_seeds_up.png" id="13_a1fk8"]
 [ext_resource type="Texture2D" uid="uid://b4vtheyaxcnjp" path="res://assets/character_spritesheets/player_seeds_left.png" id="14_wvrdf"]
 [ext_resource type="Texture2D" uid="uid://j5nc858xsyv3" path="res://assets/character_spritesheets/player_seeds_right.png" id="15_onbr0"]
@@ -1609,6 +1617,9 @@ graph_offset = Vector2(-208, -135)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ocino")
 seeds = Array[Resource("res://resources/crop/seed.gd")]([ExtResource("2_x8cdb"), ExtResource("3_6x1ey"), ExtResource("4_xrjjv"), ExtResource("5_p7fo4")])
+plant_sounds = Array[AudioStream]([ExtResource("6_ctrk1"), ExtResource("7_2nq2r"), ExtResource("8_q4f3e"), ExtResource("9_pbl3v")])
+harvest_sounds = Array[AudioStream]([ExtResource("10_h4ijp"), ExtResource("11_l36if")])
+destroy_sounds = Array[AudioStream]([ExtResource("12_qaxxo"), ExtResource("13_20ibg")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_60k4h")
@@ -1651,6 +1662,9 @@ parameters/Harvesting/blend_position = Vector2(1, 0.00852716)
 parameters/Idle/blend_position = Vector2(-0.00239807, 0.995781)
 parameters/Planting/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -15.0
 
 [connection signal="body_entered" from="Action/ActionArea" to="." method="_on_action_area_body_entered"]
 [connection signal="body_exited" from="Action/ActionArea" to="." method="_on_action_area_body_exited"]

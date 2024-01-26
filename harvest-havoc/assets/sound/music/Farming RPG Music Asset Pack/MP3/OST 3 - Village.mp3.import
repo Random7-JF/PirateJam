@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfeav2f0c2ckd"
+path="res://.godot/imported/OST 3 - Village.mp3-54f6c7743e8052138bba974732b84800.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/Farming RPG Music Asset Pack/MP3/OST 3 - Village.mp3"
+dest_files=["res://.godot/imported/OST 3 - Village.mp3-54f6c7743e8052138bba974732b84800.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

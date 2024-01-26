@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwwwm4ewgke3x"]
+[gd_scene load_steps=9 format=3 uid="uid://cwwwm4ewgke3x"]
 
 [ext_resource type="TileSet" uid="uid://c2odeu0j3kyyg" path="res://resources/world/experiment_tile.tres" id="1_lo8ne"]
 [ext_resource type="PackedScene" uid="uid://bm10j5lkgvf1x" path="res://scenes/character/goat/goat.tscn" id="1_y8kd8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c6hfjiageu0qe" path="res://scenes/grow_scenes/crop/crop.tscn" id="5_co7vk"]
 [ext_resource type="PackedScene" uid="uid://c2h73akfle7y8" path="res://scenes/ui/ui.tscn" id="6_v1m7f"]
 [ext_resource type="PackedScene" uid="uid://dd0pwkk7q72w2" path="res://scenes/ui/action_bar/actionbar.tscn" id="7_oemsq"]
+[ext_resource type="PackedScene" uid="uid://duvrm4f6l6axq" path="res://scenes/sound/background_music.tscn" id="8_fbogq"]
 
 [node name="Experiment" type="Node2D"]
 
@@ -57,6 +58,8 @@ follow_viewport_enabled = false
 
 [node name="Actionbar" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("7_oemsq")]
 player = NodePath("../../Player")
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("8_fbogq")]
 
 [connection signal="changed" from="TileMap" to="." method="_on_tile_map_changed"]
 

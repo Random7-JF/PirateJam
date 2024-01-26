@@ -14,8 +14,14 @@ signal change_seed(seeds: Array[Seed], current: int)
 @export var action_cooldown: float = 0.7
 @export var seeds: Array[Seed]
 
+@export var plant_sounds: Array[AudioStream]
+@export var harvest_sounds: Array[AudioStream]
+@export var destroy_sounds: Array[AudioStream]
+
 @onready var action_area = $Action/ActionArea
 @onready var animation_tree = $AnimationTree
+@onready var audio_stream_player = $AudioStreamPlayer
+
 
 var direction: Vector2 = Vector2.ZERO
 var action_range: float = 1.0
@@ -55,7 +61,7 @@ func _input(_event):
 		action()
 	if Input.is_action_just_pressed("select_action_1"):
 		current_action = Actions.Plant
-		emit_signal("plant_action_selected", get_all_current_seeds(), current_seed)
+		emit_signal("plant_action_selected", seeds, current_seed)
 	if Input.is_action_just_pressed("select_action_2"):
 		current_action = Actions.Harvest
 		emit_signal("harvest_action_selected")
@@ -107,31 +113,36 @@ func update_animations():
 func action():
 	if time_since_last_action < action_cooldown:
 		return
-	
 	if current_action == Actions.Plant:
 		emit_signal("plant_action_taken", to_global(action_area.position))
 		is_planting = true
+		audio_stream_player.stream = plant_sounds.pick_random()
+		audio_stream_player.play()
 	else:
 		if plant_body != null:
 			if plant_body is Crop and current_action == Actions.Harvest:
 				is_harvesting = true
 				plant_body.harvest(self)
+				audio_stream_player.stream = harvest_sounds.pick_random()
+				audio_stream_player.play()
 			elif plant_body is Weed and current_action == Actions.Destroy:
 				plant_body.destory()
 				is_destorying = true
+				audio_stream_player.stream = destroy_sounds.pick_random()
+				audio_stream_player.play()
 	
 	time_since_last_action = 0.0
 
 func add_harvested_crop(crop_amount: int, crop_varaint: int):
 	print("Amount: ", crop_amount, "Variant: ", crop_varaint)
 
-func get_all_current_seeds() -> Array[Seed]:
-	var current_seeds: Array[Seed]
-	for seed in seeds:
-		print("Seed: ", seed.name, " Count: ", seed.count)
-		if seed.count > 0:
-			current_seeds.append(seed)
-	return current_seeds
+#func get_all_current_seeds() -> Array[Seed]:
+	#var current_seeds: Array[Seed]
+	#for seed in seeds:
+		#print("Seed: ", seed.name, " Count: ", seed.count)
+		#if seed.count > 0:
+			#current_seeds.append(seed)
+	#return current_seeds
 
 func add_seeds(seed_type: int, add_count: int):
 	seeds[seed_type].count += add_count
