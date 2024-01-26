@@ -1,5 +1,7 @@
 extends Control
 
+signal paid_rent()
+
 @export var player: Player
 @export var world: GameWorld
 
@@ -29,27 +31,31 @@ func update_units(amount: int):
 	current_units.text = str(amount)
 
 func _on_buy_goat_pressed():
-	player.spend_units(125)
-	update_units(player.units)
-	world.spawn_goat()
-	
+	if player.check_for_units(125):
+		player.spend_units(125)
+		update_units(player.units)
+		world.spawn_goat()
+		
 func _on_buy_seeds_pressed():
-	player.add_seeds(seed_stock, 5)
-	player.spend_units(20)
-	update_units(player.units)
-	seed_stock = min(seed_stock + 1, max_speed_stock)
-	if seed_stock == 4:
-		buy_seeds.disabled = true
-		buy_seeds_label.visible = false
+	if player.check_for_units(20):
+		player.add_seeds(seed_stock, 5)
+		player.spend_units(20)
+		update_units(player.units)
+		seed_stock = min(seed_stock + 1, max_speed_stock)
+		if seed_stock == 4:
+			buy_seeds.disabled = true
+			buy_seeds_label.visible = false
 		
 func _on_pay_rent_pressed():
-	player.spend_units(100)
-	update_units(player.units)
-	player.rent_payed = true
-	rent_due.text = "PAID"
-	rent_total.text = ""
-	pay_rent.disabled = true
-	pay_rent_label.visible = false
+	if player.check_for_units(1000):
+		player.spend_units(1000)
+		update_units(player.units)
+		player.rent_payed = true
+		rent_due.text = "RENT PAID"
+		rent_total.text = ""
+		pay_rent.disabled = true
+		pay_rent_label.visible = false
+		emit_signal("paid_rent")
 
 func _on_crops_pressed():
 	player.sell_all_crops()

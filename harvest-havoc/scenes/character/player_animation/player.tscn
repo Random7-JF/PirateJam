@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://bm1fe3xa8xlgj" path="res://assets/character_spritesheets/player_hoe_up.png" id="19_ot20u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60k4h"]
+radius = 4.0
+height = 22.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3wsd"]
 
@@ -1622,9 +1624,12 @@ destroy_sounds = Array[AudioStream]([ExtResource("12_qaxxo"), ExtResource("13_20
 shop_sound = ExtResource("14_v65lt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+rotation = -1.5708
 shape = SubResource("CapsuleShape2D_60k4h")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("4_pc1nb")
 hframes = 5
 frame = 1

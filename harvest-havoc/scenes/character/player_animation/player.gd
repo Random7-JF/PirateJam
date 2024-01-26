@@ -20,6 +20,7 @@ signal change_seed(seeds: Array[Seed], current: int)
 @export var destroy_sounds: Array[AudioStream]
 
 @export var shop_ui: Control
+@export var hud_ui: Control
 @export var shop_sound: AudioStream
 
 @onready var action_area = $Action/ActionArea
@@ -182,12 +183,16 @@ func add_seeds(seed_type: int, add_count: int):
 
 func toggle_shop_ui():
 	shop_ui.visible = !shop_ui.visible
+	hud_ui.visible = !hud_ui.visible
 	audio_stream_player.stream = shop_sound
 	audio_stream_player.play()
 
 func spend_units(amount: int):
 	units -= amount
 	print("Spents units, current: ", units,  " amount: ", amount)
+
+func check_for_units(amount: int) -> bool:
+	return units >= amount
 	
 func sell_all_crops():
 	var total_crops: int
