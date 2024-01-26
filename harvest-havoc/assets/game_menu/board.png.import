@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nymyphnei1uu"
-path="res://.godot/imported/player_scythe_down.png-5e831a446dad7bcae29d7ed9143fbf15.ctex"
+uid="uid://c4yd2vmcuiens"
+path="res://.godot/imported/board.png-775d748cd05823aae340cb12b3e5a164.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character_spritesheets/player_scythe_down.png"
-dest_files=["res://.godot/imported/player_scythe_down.png-5e831a446dad7bcae29d7ed9143fbf15.ctex"]
+source_file="res://assets/game_menu/board.png"
+dest_files=["res://.godot/imported/board.png-775d748cd05823aae340cb12b3e5a164.ctex"]
 
 [params]
 
