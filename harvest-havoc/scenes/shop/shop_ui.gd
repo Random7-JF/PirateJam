@@ -13,8 +13,11 @@ signal paid_rent()
 
 @onready var rent_due = $HBoxContainer/Buy/Spacer/RentDue
 @onready var rent_total = $HBoxContainer/Buy/Spacer/RentTotal
+@onready var rent_paid = $HBoxContainer/Buy/Spacer/RentPaid
 @onready var pay_rent = $HBoxContainer/Buy/PayRent
 @onready var pay_rent_label = $HBoxContainer/Buy/PayRent/Label
+
+
 
 var seed_stock = 1
 var max_speed_stock = 4
@@ -51,7 +54,8 @@ func _on_pay_rent_pressed():
 		player.spend_units(1000)
 		update_units(player.units)
 		player.rent_payed = true
-		rent_due.text = "RENT PAID"
+		rent_due.visible = false
+		rent_paid.visible = true
 		rent_total.text = ""
 		pay_rent.disabled = true
 		pay_rent_label.visible = false

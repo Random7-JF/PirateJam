@@ -15,7 +15,8 @@ func _ready():
 
 func _physics_process(delta):
 	last_ate += delta
-	if not have_target:
+
+	if not have_target or last_ate > 10.0:
 		var targets = $WeedDetector.get_overlapping_bodies()
 		for target in targets:
 			if target is Weed:
